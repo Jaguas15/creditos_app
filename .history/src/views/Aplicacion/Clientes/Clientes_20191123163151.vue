@@ -1,0 +1,31 @@
+<template>
+  <ContentWrapper>
+    <div class="content-heading">
+      <div>
+        {{ title }}
+        <!-- <small>Vue.js 2 grid components</small> -->
+      </div>
+    </div>
+
+    <v-client-table :data="tableData" :columns="headings" :options="options">
+      <template slot="action" slot-scope="props">
+        <div>
+          <b-btn variant="outline-info mr-2" class="btn-xs" @click.prevent="edit(props.row)">edit</b-btn>
+          <b-btn variant="outline-danger" class="btn-xs" @click.prevent="remove(props.row)">remove</b-btn>
+        </div>
+      </template>
+      <template slot="child_row" slot-scope="props">
+        <div>
+          <strong>Codigo:</strong>
+          {{props.row.id_cliente}}
+        </div>
+        <div>
+          <strong>Formato:</strong>
+          {{props.row.n_formato}}
+        </div>
+      </template>
+    </v-client-table>
+  </ContentWrapper>
+</template>
+
+<script src="./Clientes.js"></script>
