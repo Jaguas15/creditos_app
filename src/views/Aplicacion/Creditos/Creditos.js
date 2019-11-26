@@ -24,6 +24,9 @@ export default {
             estudios: 0,
             credito_maestro: {},
             detalle_credito: [],
+
+            filter: null,
+        filterOn: [],
             perPage: 3,
             currentPage: 1,
             items: [
@@ -62,6 +65,11 @@ export default {
         onRowSelect(event) {
             this.estado_seleccion_cliente = true;
         },
+        onFiltered(filteredItems) {
+            // Trigger pagination to update the number of buttons/pages due to filtering
+            this.totalRows = filteredItems.length
+            this.currentPage = 1
+          },
         pad(n, width, z) {
             z = z || "0";
             n = n + "";

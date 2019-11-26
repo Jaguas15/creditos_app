@@ -28,12 +28,33 @@
     
 
     <p class="mt-3">Current Page: {{ currentPage }}</p>
-
+    <b-form-group
+          label="Filter"
+          label-cols-sm="3"
+          label-align-sm="right"
+          label-size="sm"
+          label-for="filterInput"
+          class="mb-0"
+        >
+        <b-input-group size="sm">
+            <b-form-input
+              v-model="filter"
+              type="search"
+              id="filterInput"
+              placeholder="Type to Search"
+            ></b-form-input>
+            <b-input-group-append>
+              <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+            </b-input-group-append>
+          </b-input-group>
+    </b-form-group>
     <b-table
       id="my-table"
       :items="items"
       :per-page="perPage"
       :current-page="currentPage"
+      :filter="filter"
+      :filterIncludedFields="filterOn"
       small
     ></b-table>
     <b-pagination
