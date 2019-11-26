@@ -7,6 +7,7 @@ import Layout from "./components/Layout/Layout.vue";
 //import Clientes from "@/views/Aplicacion/Clientes/Clientes";
 
 const Clientes = () => import('@/views/Aplicacion/Clientes/Clientes.vue')
+const Creditos = () => import('@/views/Aplicacion/Creditos/Creditos.vue')
 
 Vue.use(Router);
 
@@ -27,6 +28,14 @@ let router = new Router({
           path: "/clientes",
           name: "clientes",
           component: Clientes,
+          meta: {
+            requiresAuth: true
+          }
+        },
+        {
+          path: "/reg_creditos",
+          name: "reg_creditos",
+          component: Creditos,
           meta: {
             requiresAuth: true
           }
