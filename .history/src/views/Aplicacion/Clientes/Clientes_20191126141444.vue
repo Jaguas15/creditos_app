@@ -51,7 +51,7 @@
             <!-- </div> -->
 
             <div class="col-6">
-              <label for="apellido">Apellido</label>
+              <label for="Nombre">Apellido</label>
               <input
                 id="apellido"
                 v-model="datos_cliente.apellido"
@@ -68,10 +68,6 @@
                 class="invalid-feedback"
               >{{ errors.first("demo.required") }}</span>
             </div>
-          </div>
-          <div class="form-row align-items-center">
-              <div class="col-6">
-              </div>
           </div>
         </form>
 

@@ -19,7 +19,8 @@
             class="btn-xs"
             @click.prevent="edit(props.row)"
             v-b-modal.clientesModal
-          >Editar</b-btn>
+            >Editar</b-btn
+          >
           <!-- <b-btn variant="outline-danger" class="btn-xs" @click.prevent="remove(props.row)">remove</b-btn> -->
         </div>
       </template>
@@ -29,50 +30,56 @@
     <b-modal id="clientesModal" size="lg" :title="title">
       <form @submit.prevent="validateBeforeSubmit('demo')" data-vv-scope="demo">
         <form>
-          <div class="form-row align-items-center">
-            <div class="col-6">
-              <label for="Nombre">Nombre</label>
-              <input
-                id="Nombre"
-                v-model="datos_cliente.nombre"
-                v-validate="'required'"
-                :class="{
+         <!--  <div class="form-row align-items-center">-->
+          
+            <fieldset>
+              <div class="form-group row">
+                <label for="id">Nombre</label>
+                <div class="col-auto">
+                  <input
+                    id="Nombre"
+                    v-model="datos_cliente.nombre"
+                    v-validate="'required'"
+                    :class="{
                       'form-control': true,
                       'is-invalid': errors.has('demo.required')
                     }"
-                type="text"
-                name="required"
-              />
-              <span
-                v-show="errors.has('demo.required')"
-                class="invalid-feedback"
-              >{{ errors.first("demo.required") }}</span>
-            </div>
-            <!-- </div> -->
-
-            <div class="col-6">
-              <label for="apellido">Apellido</label>
-              <input
-                id="apellido"
-                v-model="datos_cliente.apellido"
-                v-validate="'required'"
-                :class="{
-                      'form-control': true,
-                      'is-invalid': errors.has('demo.required')
-                    }"
-                type="text"
-                name="required"
-              />
-              <span
-                v-show="errors.has('demo.required')"
-                class="invalid-feedback"
-              >{{ errors.first("demo.required") }}</span>
-            </div>
-          </div>
-          <div class="form-row align-items-center">
-              <div class="col-6">
+                    type="text"
+                    name="required"
+                  />
+                  <span
+                    v-show="errors.has('demo.required')"
+                    class="invalid-feedback"
+                    >{{ errors.first("demo.required") }}</span
+                  >
+                </div>
               </div>
-          </div>
+            </fieldset>
+            <fieldset>
+              <div class="form-group row">
+                <label for="Nombre">Apellido</label>
+                <div class="col-auto">
+                  <input
+                    id="apellido"
+                    v-model="datos_cliente.apellido"
+                    v-validate="'required'"
+                    :class="{
+                      'form-control': true,
+                      'is-invalid': errors.has('demo.required')
+                    }"
+                    type="text"
+                    name="required"
+                  />
+                  <span
+                    v-show="errors.has('demo.required')"
+                    class="invalid-feedback"
+                    >{{ errors.first("demo.required") }}</span
+                  >
+                </div>
+              </div>
+            </fieldset>
+
+        <!--   </div> -->
         </form>
 
         <!--     <div class="p-col-6">
@@ -144,7 +151,7 @@
               <label for="id_n_identificacion">N°_identificacion:</label>
               <InputText id="id_n_identificacion" v-model="datos_cliente.n_identificacion" />
             </div>
-        </div>-->
+          </div> -->
       </form>
     </b-modal>
     <!-- Fin Modal -->

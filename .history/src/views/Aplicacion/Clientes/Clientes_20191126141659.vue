@@ -30,6 +30,7 @@
       <form @submit.prevent="validateBeforeSubmit('demo')" data-vv-scope="demo">
         <form>
           <div class="form-row align-items-center">
+              <fieldset>
             <div class="col-6">
               <label for="Nombre">Nombre</label>
               <input
@@ -68,6 +69,7 @@
                 class="invalid-feedback"
               >{{ errors.first("demo.required") }}</span>
             </div>
+            </fieldset>
           </div>
           <div class="form-row align-items-center">
               <div class="col-6">

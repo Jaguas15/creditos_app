@@ -30,48 +30,46 @@
       <form @submit.prevent="validateBeforeSubmit('demo')" data-vv-scope="demo">
         <form>
           <div class="form-row align-items-center">
-            <div class="col-6">
-              <label for="Nombre">Nombre</label>
-              <input
-                id="Nombre"
-                v-model="datos_cliente.nombre"
-                v-validate="'required'"
-                :class="{
-                      'form-control': true,
-                      'is-invalid': errors.has('demo.required')
-                    }"
-                type="text"
-                name="required"
-              />
-              <span
-                v-show="errors.has('demo.required')"
-                class="invalid-feedback"
-              >{{ errors.first("demo.required") }}</span>
-            </div>
-            <!-- </div> -->
-
-            <div class="col-6">
-              <label for="apellido">Apellido</label>
-              <input
-                id="apellido"
-                v-model="datos_cliente.apellido"
-                v-validate="'required'"
-                :class="{
-                      'form-control': true,
-                      'is-invalid': errors.has('demo.required')
-                    }"
-                type="text"
-                name="required"
-              />
-              <span
-                v-show="errors.has('demo.required')"
-                class="invalid-feedback"
-              >{{ errors.first("demo.required") }}</span>
-            </div>
-          </div>
-          <div class="form-row align-items-center">
+            <div class="row">
               <div class="col-6">
+                <label for="Nombre">Nombre</label>
+                <input
+                  id="Nombre"
+                  v-model="datos_cliente.nombre"
+                  v-validate="'required'"
+                  :class="{
+                      'form-control': true,
+                      'is-invalid': errors.has('demo.required')
+                    }"
+                  type="text"
+                  name="required"
+                />
+                <span
+                  v-show="errors.has('demo.required')"
+                  class="invalid-feedback"
+                >{{ errors.first("demo.required") }}</span>
               </div>
+              <!-- </div> -->
+
+              <div class="col-6">
+                <label for="Nombre">Apellido</label>
+                <input
+                  id="apellido"
+                  v-model="datos_cliente.apellido"
+                  v-validate="'required'"
+                  :class="{
+                      'form-control': true,
+                      'is-invalid': errors.has('demo.required')
+                    }"
+                  type="text"
+                  name="required"
+                />
+                <span
+                  v-show="errors.has('demo.required')"
+                  class="invalid-feedback"
+                >{{ errors.first("demo.required") }}</span>
+              </div>
+            </div>
           </div>
         </form>
 
