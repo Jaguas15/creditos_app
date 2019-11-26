@@ -7,6 +7,7 @@ export default {
         return {
             titulo: "Registro de Creditos",
             cedula_buscar: null,
+            col_clientes: ['Nombres', 'Apellidos', 'Identificación'],
             clientes: [],
             estado_seleccion_cliente: false,
             cliente_seleccionado: {

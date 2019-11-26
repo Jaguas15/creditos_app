@@ -25,7 +25,8 @@
             <div class="col-md-12">
               <template>
                 <div class="overflow-auto">
-                  <b-table id="tab-clientes" hover bordered :items="clientes" small></b-table>
+                  <!-- <b-table id="tab-clientes" hover bordered :items="clientes" small></b-table> -->
+                  <b-table stacked :items="clientes" :fields="cols"></b-table>
                 </div>
               </template>
             </div>
