@@ -1,0 +1,32 @@
+p-sidebar{
+    z-index: 2010 !important;
+}
+
+.p-toast.p-toast-topright {
+    z-index: 2011 !important;
+    top: 70px;
+}
+
+.float-r{
+    float: right !important;
+}
+
+.p-dialog-content{
+    padding: 3em !important;
+}
+
+label {
+    font-weight: bold;
+}
+
+.totalizador{
+    font-weight: bold;
+    float: right;
+    margin-right: 148px;
+    /* margin-top: 5px; */
+    padding-top: 5px !important;
+    padding: 0;
+    height: 2.286em;
+    width: 150px;
+    background-color: #ccc;
+}
