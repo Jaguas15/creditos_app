@@ -249,4 +249,4 @@ CREATE TABLE `cr_gs_pagos_maestro` (
 
 insert  into `cr_gs_pagos_maestro`(`id_pagos`,`id_credito`,`fecha_pago`,`estado`,`vlor_pagado`,`cta_bncaria`,`frma_pago`,`observacion`) values (64,15,'2019-11-13','S',NULL,NULL,NULL,NULL),(65,16,'2019-11-13','S',NULL,NULL,NULL,NULL),(66,17,'2019-11-13','S',NULL,NULL,NULL,NULL);
 
-/*Table structure f
+/*Table structure f*/

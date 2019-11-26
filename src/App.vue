@@ -22,4 +22,8 @@ export default {
 .table > thead > tr > th {
   color: #fff !important;
 }
+
+.table > tbody > tr {
+  background-color: #fff !important;
+}
 </style>

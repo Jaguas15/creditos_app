@@ -9,7 +9,7 @@
               <input type="text" class="form-control" id="cedula" v-model="cedula_buscar" />
             </div>
             <div class="col-md-3">
-                <br>
+              <br />
               <button
                 type="button"
                 class="btn btn-labeled btn-primary mb-2 mr-1"
@@ -22,70 +22,18 @@
             </div>
           </div>
           <div class="row">
-              <div class="col-md-12" >
-                <template>
-  <div class="overflow-auto">
-    
-
-    <p class="mt-3">Current Page: {{ currentPage }}</p>
-    <b-form-group
-          label="Filter"
-          label-cols-sm="3"
-          label-align-sm="right"
-          label-size="sm"
-          label-for="filterInput"
-          class="mb-0"
-        >
-        <b-input-group size="sm">
-            <b-form-input
-              v-model="filter"
-              type="search"
-              id="filterInput"
-              placeholder="Type to Search"
-            ></b-form-input>
-            <b-input-group-append>
-              <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
-            </b-input-group-append>
-          </b-input-group>
-    </b-form-group>
-    <b-table
-      id="my-table"
-      :items="items"
-      :per-page="perPage"
-      :current-page="currentPage"
-      :filter="filter"
-      :filterIncludedFields="filterOn"
-      small
-    ></b-table>
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-      aria-controls="my-table"
-    ></b-pagination>
-  </div>
-</template>
-                <!-- <DataTable
-                  :value="clientes"
-                  :selection.sync="cliente_seleccionado"
-                  selectionMode="single"
-                  data-key="id"
-                  @row-select="onRowSelect"
-                >
-                 
-                  <template #header>INFORMACIÓN DEL CLIENTE</template>
-                
-                  <Column field="id_cliente" header="Codigo"></Column>
-                  <Column field="n_formato" header="Nº Formato"></Column>
-                  <Column field="nombres" header="Nombre"></Column>
-                  <Column field="apellidos" header="Apellido"></Column>
-                </DataTable> -->
-              </div>
+            <div class="col-md-12">
+              <template>
+                <div class="overflow-auto">
+                  <b-table id="tab-clientes" hover bordered :items="clientes" small></b-table>
+                </div>
+              </template>
+            </div>
           </div>
         </div>
       </div>
     </form>
   </ContentWrapper>
-</template>
+</template>                
 
 <script src="./Creditos.js"></script>
