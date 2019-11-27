@@ -176,7 +176,6 @@
   <b-form-textarea
     id="Observacion"
     placeholder="Observacion"
-    v-model="datos_cliente.Observacion"
     rows="3"
     no-resize
   ></b-form-textarea>

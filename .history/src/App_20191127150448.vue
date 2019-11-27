@@ -27,7 +27,7 @@ export default {
   background-color: #fff !important;
 }
 
-
+<<<<<<< HEAD
 .modal-title{
     color: #fff !important;
     font-size: 16pt;

@@ -159,28 +159,17 @@
             </b-form-group>
 
             <!-- Estado  -->
-              <div class="col-6">
-            <b-form-group  label="Estado:" label-for="Estado">
+            <div class="col-6">
+               <b-form-group  label="Identificacion:" label-for="Identificacion">
+              <label for="estado">Estado:</label>
               <b-form-select
-                id="Estado"
+                id="estado"
                 v-model="datos_cliente.estado"
                 :options="Estado"
               ></b-form-select>
-               
-               </b-form-group>
-           </div>
-
-
+            </div>
+  </b-form-group> 
           </div>
-            <div>
-  <b-form-textarea
-    id="Observacion"
-    placeholder="Observacion"
-    v-model="datos_cliente.Observacion"
-    rows="3"
-    no-resize
-  ></b-form-textarea>
-</div>
         </form>
     </b-modal>
     <!-- Fin Modal -->
