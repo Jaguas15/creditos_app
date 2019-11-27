@@ -27,13 +27,19 @@ export default {
   background-color: #fff !important;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38847356f51359aa17994bb5da5326ebef886203
 .modal-title{
     color: #fff !important;
     font-size: 16pt;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38847356f51359aa17994bb5da5326ebef886203
 .wrapper .aside-container .aside-inner {
   overflow: auto;
 }
