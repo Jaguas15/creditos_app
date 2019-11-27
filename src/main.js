@@ -30,9 +30,10 @@ if (token) {
 }
 
 //Componentes globales
-/*import VModal from 'vue-js-modal'
- 
-Vue.use(VModal);*/
+/*import VModal from 'vue-js-modal'*/
+import Datepicker from 'vuejs-datepicker'
+
+Vue.component('Datepicker', Datepicker);
 //************************** */
 
 Vue.config.productionTip = false

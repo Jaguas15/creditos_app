@@ -1,3 +1,7 @@
+// CSS Loaders
+import "loaders.css/loaders.css";
+import "spinkit/css/spinkit.css";
+
 import Clientes_service from "./../../../_services/clientes_service";
 import Credito_service from "./../../../_services/creditos_service";
 
@@ -6,19 +10,41 @@ export default {
     data() {
         return {
             titulo: "Registro de Creditos",
+            loading: false,
             cedula_buscar: null,
-            col_clientes: ['Nombres', 'Apellidos', 'Identificación'],
+            col_clientes: [
+                {
+                    key: 'id_cliente',
+                    label: 'Código',
+                },
+                {
+                    key: 'n_identificacion',
+                    label: 'Identificación',
+                },
+                {
+                    key: 'nombres',
+                    label: 'Nombre',
+                },
+                {
+                    key: 'apellidos',
+                    label: 'Apellidos',
+                },
+                'options'
+            ],
+            col_detalle: [
+
+            ],
             clientes: [],
             estado_seleccion_cliente: false,
             cliente_seleccionado: {
                 id_clientes: 0
             },
             periodos: [
-                { codigo: "SEMANAL", text: "Semanal" },
-                { codigo: "QUINCENAL", text: "Quincenal" }
+                { value: "SEMANAL", text: "Semanal" },
+                { value: "QUINCENAL", text: "Quincenal" }
             ],
-            fecha: null,
-            periodo: null,
+            fecha: new Date,
+            periodo: 'SEMANAL',
             n_cuotas: 0,
             tasa: null,
             vr_capital: 0,
@@ -27,22 +53,26 @@ export default {
             detalle_credito: [],
         };
     },
-    mounted() { },
+    mounted() { 
+        
+    },
     methods: {
         fn_buscar_cliente() {
             let cli = new Clientes_service();
 
+            this.loading = true;
+            
             cli
                 .cliente_x_cedula_get(this.cedula_buscar)
                 .then(response => {
                     this.clientes = response.data;
-                    console.log(this.clientes);
+                    this.loading = false;
                 })
                 .catch(error => {
                     console.log(error.data);
                 });
         },
-        onRowSelect(event) {
+        onRowSelected(record) {
             this.estado_seleccion_cliente = true;
         },
         onFiltered(filteredItems) {
