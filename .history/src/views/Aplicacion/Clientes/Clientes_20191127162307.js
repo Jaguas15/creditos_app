@@ -111,8 +111,8 @@ export default {
   },
   methods: {
     format(value, event) {
-        return value.toLowerCase()
-      },
+      return value.toupperCase()
+    },
     listado_clientes() {
       let datos_clientes = new Clientes_service();
       datos_clientes

@@ -169,18 +169,17 @@
                
                </b-form-group>
            </div>
-
-
-          </div>
-            <div>
+  
+  <div>
   <b-form-textarea
-    id="Observacion"
-    placeholder="Observacion"
-    v-model="datos_cliente.Observacion"
+    id="textarea-no-resize"
+    placeholder="Fixed height textarea"
     rows="3"
     no-resize
   ></b-form-textarea>
 </div>
+
+          </div>
         </form>
     </b-modal>
     <!-- Fin Modal -->
