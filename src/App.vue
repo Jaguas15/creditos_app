@@ -27,9 +27,26 @@ export default {
   background-color: #fff !important;
 }
 
+<<<<<<< HEAD
 .modal-title{
     color: #fff !important;
     font-size: 16pt;
 }
 
+=======
+.wrapper .aside-container .aside-inner {
+  overflow: auto;
+}
+
+.btn-label-r {
+    position: relative;
+    background: transparent;
+    background: 
+    rgba(0, 0, 0, 0.06);
+    display: inline-block;
+    padding:  0.375rem 1rem;
+    right: -1rem;
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+>>>>>>> dcf6095b3fe18db1684fa30f9e881251881be474
 </style>
