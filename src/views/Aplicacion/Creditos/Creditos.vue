@@ -4,15 +4,23 @@
       <div class="container-fluid">
         <div class="form-group">
           <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
               <label for="cedula">Cédula:</label>
-              <input type="text" class="form-control" id="cedula" v-model="cedula_buscar" />
+              <input
+                type="text"
+                class="form-control"
+                id="cedula"
+                v-model="cedula_buscar"
+                placeholder="Escriba número de cédula del cliente"
+              />
             </div>
-            <div class="col-md-3">
-              <br />
+          </div>
+          <div class="row">
+            <div class="col-12">
               <button
+                style="margin-top: 5px;"
                 type="button"
-                class="btn btn-labeled btn-primary mb-2 mr-1"
+                class="btn btn-labeled btn-primary mb-2 mr-1 float-right"
                 @click="fn_buscar_cliente"
               >
                 Buscar
@@ -22,7 +30,7 @@
               </button>
             </div>
           </div>
-          <div class="row mt-5">
+          <div class="row">
             <div class="col-md-12">
               <!-- START card-->
               <div class="card card-default">
@@ -47,71 +55,104 @@
               <!-- END card-->
             </div>
           </div>
-          
-          <div class="row">
-            <div class="col-2" v-if="estado_seleccion_cliente">
-              <label for="fecha">Fecha</label>
-              <datepicker id="fecha" v-model="fecha" :bootstrapStyling="true" />
-            </div>
-            <div class="col-2" v-if="estado_seleccion_cliente">
-              <label for="periodo">Periodo</label>
-              <b-form-select id="periodo" v-model="periodo" :options="periodos"></b-form-select>
-            </div>
-            <div class="col-1" v-if="estado_seleccion_cliente">
-              <label for="cuotas">Cuotas</label>
-              <b-input
-                v-model="n_cuotas"
-                id="cuotas"
-                class="mb-2 mr-sm-2 mb-sm-0"
-                placeholder="No. Cuotas"
-              ></b-input>
-            </div>
-            <div class="col-1" v-if="estado_seleccion_cliente">
-              <label for="tasa">Tasa</label>
-              <b-input v-model="tasa" id="tasa" class="mb-2 mr-sm-2 mb-sm-0" placeholder="Tasa"></b-input>
-            </div>
-            <div class="col-2" v-if="estado_seleccion_cliente">
-              <label for="capital">Vr. Capital</label>
-              <b-input
-                v-model="vr_capital"
-                id="capital"
-                class="mb-2 mr-sm-2 mb-sm-0"
-                placeholder="$ Capital"
-              ></b-input>
-            </div>
-            <div class="col-2" v-if="estado_seleccion_cliente">
-              <label for="estudios">Estudios</label>
-              <b-input
-                v-model="estudios"
-                id="estudios"
-                class="mb-2 mr-sm-2 mb-sm-0"
-                placeholder="$ Estudios"
-              ></b-input>
-            </div>
 
-            <div
-              class="col-2"
-              v-if="fecha != '' && periodo != '' && n_cuotas > 0 && tasa > 0 && vr_capital > 0 && estudios >= 0"
-            >
-              <b-button
-                style="float: left !important;"
-                variant="outline-primary"
-                @click="fnCalcularDiferido()"
-              >Calcular</b-button>
+          <div class="row">
+            <div class="col-12">
+              <div class="card card-default">
+                <div class="card-header text-truncate">
+                  <h5>DILIGENCIAMIENTO DEL CREDITO</h5>
+                </div>
+                <div class="card-body">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-2" v-if="estado_seleccion_cliente">
+                        <label for="fecha">Fecha</label>
+                        <datepicker id="fecha" v-model="fecha" :bootstrapStyling="true" />
+                      </div>
+                      <div class="col-2" v-if="estado_seleccion_cliente">
+                        <label for="periodo">Periodo</label>
+                        <b-form-select id="periodo" v-model="periodo" :options="periodos"></b-form-select>
+                      </div>
+                      <div class="col-2" v-if="estado_seleccion_cliente">
+                        <label for="cuotas">Cuotas</label>
+                        <b-input
+                          v-model="n_cuotas"
+                          id="cuotas"
+                          class="mb-2 mr-sm-2 mb-sm-0"
+                          placeholder="No. Cuotas"
+                        ></b-input>
+                      </div>
+                      <div class="col-2" v-if="estado_seleccion_cliente">
+                        <label for="tasa">Tasa</label>
+                        <b-input
+                          v-model="tasa"
+                          id="tasa"
+                          class="mb-2 mr-sm-2 mb-sm-0"
+                          placeholder="Tasa"
+                        ></b-input>
+                      </div>
+                      <div class="col-2" v-if="estado_seleccion_cliente">
+                        <label for="capital">Vr. Capital</label>
+                        <b-input
+                          v-model="vr_capital"
+                          id="capital"
+                          class="mb-2 mr-sm-2 mb-sm-0"
+                          placeholder="$ Capital"
+                        ></b-input>                        
+                      </div>
+                      <div class="col-2" v-if="estado_seleccion_cliente">
+                        <label for="estudios">Estudios</label>
+                        <b-input
+                          v-model="estudios"
+                          id="estudios"
+                          class="mb-2 mr-sm-2 mb-sm-0"
+                          placeholder="$ Estudios"
+                        ></b-input>
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-12">
+                        <b-button
+                          style="float: right !important;"
+                          variant="primary"
+                          :disabled="fecha != '' && periodo != '' && n_cuotas > 0 && tasa > 0 && vr_capital > 0 && estudios >= 0 ? false: true"
+                          @click="fnCalcularDiferido()"
+                        >Calcular</b-button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="row mt-5" v-if="detalle_credito.length > 0">
-              <div class="col-12">
+          <div class="row" v-if="detalle_credito.length > 0">
+            <div class="col-12">
+              <div class="card card-default">
+                <div class="card-header text-truncate">
+                  <h5>CUOTAS DEL CREDITO</h5>
+                </div>
+                <div class="card-body">
                   <b-table
+                    id="table_cuotas"
                     small
                     bordered
                     :fields="col_detalle"
-                    :items="detalle_credito"                    
+                    :items="detalle_credito"
                     select-mode="single"
                     reponsive="sm"
+                    :per-page="perPage"
+                    :current-page="currentPage"
                   ></b-table>
+                  <b-pagination
+                    v-model="currentPage"
+                    :total-rows="rows"
+                    :per-page="perPage"
+                    aria-controls="table_cuotas"
+                  ></b-pagination>
+                </div>
               </div>
+            </div>
           </div>
         </div>
       </div>

@@ -32,7 +32,9 @@ if (token) {
 //Componentes globales
 /*import VModal from 'vue-js-modal'*/
 import Datepicker from 'vuejs-datepicker'
-
+import InputMask from 'vue-input-mask';
+ 
+Vue.component('input-mask', InputMask)
 Vue.component('Datepicker', Datepicker);
 //************************** */
 

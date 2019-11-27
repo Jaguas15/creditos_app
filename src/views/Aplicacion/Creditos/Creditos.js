@@ -32,7 +32,30 @@ export default {
                 'options'
             ],
             col_detalle: [
-
+                {
+                    key: 'fecha_couta',
+                    label: 'Fecha Cuota'
+                },
+                {
+                    key: 'numero_couta',
+                    label: 'No. Cuota'
+                },
+                {
+                    key: 'valor_couta',
+                    label: 'Vr. Cuota'
+                },
+                {
+                    key: 'v_capital',
+                    label: 'Vr. Capital'
+                },
+                {
+                    key: 'v_interes',
+                    label: 'Vr. Interés'
+                },
+                {
+                    key: 'v_saldo',
+                    label: 'Vr. Saldo'
+                },
             ],
             clientes: [],
             estado_seleccion_cliente: false,
@@ -51,17 +74,21 @@ export default {
             estudios: 0,
             credito_maestro: {},
             detalle_credito: [],
+            perPage: 5,
+            currentPage: 1,
         };
     },
-    mounted() { 
-        
+    computed: {
+        rows() {
+            return this.detalle_credito.length;
+        },
     },
     methods: {
         fn_buscar_cliente() {
             let cli = new Clientes_service();
 
             this.loading = true;
-            
+
             cli
                 .cliente_x_cedula_get(this.cedula_buscar)
                 .then(response => {
@@ -71,7 +98,7 @@ export default {
                 .catch(error => {
                     console.log(error.data);
                 });
-        },
+        },        
         onRowSelected(record) {
             this.estado_seleccion_cliente = true;
         },
