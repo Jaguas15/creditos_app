@@ -110,9 +110,6 @@ export default {
     });
   },
   methods: {
-    format(value, event) {
-      return value.toLowerCase()
-    },
     listado_clientes() {
       let datos_clientes = new Clientes_service();
       datos_clientes

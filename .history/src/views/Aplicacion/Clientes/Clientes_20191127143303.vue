@@ -100,16 +100,16 @@
             </b-form-group>
 
             <!-- Identificacion -->
+            <b-form-group class="col-6" label="departamento:" label-for="departamento">
             <div class="col-6">
-            <b-form-group  label="Identificacion:" label-for="Identificacion">
+              <label for="identificacion">Identificacion</label>
               <b-form-select
                 id="identificacion"
                 v-model="datos_cliente.identificacion"
                 :options="Identificacion"
               ></b-form-select>
-               
                </b-form-group>
-           </div>
+            </div>
 
             <!--Numero Identificacion -->
             <div class="col-6">

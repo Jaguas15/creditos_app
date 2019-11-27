@@ -16,7 +16,6 @@ Vue.use(ClientTable);
 import Clientes_service from "./../../../_services/clientes_service";
 import DepartamentosService from "./../../../_services/departamentos_service";
 import MunicipiosService from "./../../../_services/Municipios_service";
-
 export default {
   name: "Clientes",
   components: {
@@ -27,14 +26,10 @@ export default {
       title: "Clientes",
       tableData: [],
       departamentos: [],
-      municipios: [],
       columns: ["id_cliente", "n_formato", "nombres", "apellidos", "action"],
       Identificacion: [
         { value: 1, text: "Cedula" },
         { value: 2, text: "Cedula_Extrajera" }],
-      Estado:[
-        {value:"S", text:"Activo"}, 
-        {value:"N", text:"Inactivo"}],
       options: {
         pagination: { chunk: 5 },
         sortIcon: {
@@ -99,7 +94,6 @@ export default {
   mounted() {
     this.listado_clientes();
     this.listado_departamentos();
-    this.listado_municipios(); 
   },
   created() {
     // Add IDs for child rows functionality
@@ -110,9 +104,6 @@ export default {
     });
   },
   methods: {
-    format(value, event) {
-      return value.toLowerCase()
-    },
     listado_clientes() {
       let datos_clientes = new Clientes_service();
       datos_clientes
@@ -141,35 +132,8 @@ export default {
               text: deps[i].descrpcion,
             })
           }
-         
-          // this.datos_cliente.departamento =  value;
+          //this.departamentos = response.data;
           //this.loading = false;
-        })
-        .catch(error => {
-          console.log(error.data);
-        });
-    },
-
-    listado_municipios() {
-      let municipio = new MunicipiosService();
-
-      this.municipios = [];
-
-      municipio
-        .get_municipios_x_departamento(this.datos_cliente.departamento)
-        .then(response => {
-          let munc = response.data;
-          //console.log('departamento ' + this.datos_cliente.departamento); 
-          //console.log('munipio ' +munc); 
-          for(let i in munc){
-            this.municipios.push({
-              value:munc[i].id_municipio,
-              text:munc[i].descripcion
-
-            }) 
-          }
-
-    
         })
         .catch(error => {
           console.log(error.data);

@@ -101,7 +101,9 @@
 
             <!-- Identificacion -->
             <div class="col-6">
-            <b-form-group  label="Identificacion:" label-for="Identificacion">
+            <b-form-group  label="departamento:" label-for="departamento">
+            
+              <label for="identificacion">Identificacion</label>
               <b-form-select
                 id="identificacion"
                 v-model="datos_cliente.identificacion"

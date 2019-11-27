@@ -32,9 +32,6 @@ export default {
       Identificacion: [
         { value: 1, text: "Cedula" },
         { value: 2, text: "Cedula_Extrajera" }],
-      Estado:[
-        {value:"S", text:"Activo"}, 
-        {value:"N", text:"Inactivo"}],
       options: {
         pagination: { chunk: 5 },
         sortIcon: {
@@ -110,9 +107,6 @@ export default {
     });
   },
   methods: {
-    format(value, event) {
-      return value.toLowerCase()
-    },
     listado_clientes() {
       let datos_clientes = new Clientes_service();
       datos_clientes
@@ -141,8 +135,7 @@ export default {
               text: deps[i].descrpcion,
             })
           }
-         
-          // this.datos_cliente.departamento =  value;
+          //this.departamentos = response.data;
           //this.loading = false;
         })
         .catch(error => {
@@ -152,24 +145,20 @@ export default {
 
     listado_municipios() {
       let municipio = new MunicipiosService();
-
+    
       this.municipios = [];
 
       municipio
-        .get_municipios_x_departamento(this.datos_cliente.departamento)
+        .get_municipios_x_departamento(this.datos_cliente.departamento,this.datos_cliente.municipio)
         .then(response => {
-          let munc = response.data;
-          //console.log('departamento ' + this.datos_cliente.departamento); 
-          //console.log('munipio ' +munc); 
-          for(let i in munc){
-            this.municipios.push({
-              value:munc[i].id_municipio,
-              text:munc[i].descripcion
-
-            }) 
+          let mundata =  response.data; 
+          for(let i in mundata){
+          this.municipios.push({
+            value:mundata[i].id_municipio, 
+            text : mundata[i].descripcion
+          })
           }
-
-    
+          // this.municipios = response.data;
         })
         .catch(error => {
           console.log(error.data);

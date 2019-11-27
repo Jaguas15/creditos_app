@@ -101,22 +101,20 @@
 
             <!-- Identificacion -->
             <div class="col-6">
-            <b-form-group  label="Identificacion:" label-for="Identificacion">
+              <label for="identificacion">Identificacion</label>
               <b-form-select
                 id="identificacion"
                 v-model="datos_cliente.identificacion"
                 :options="Identificacion"
               ></b-form-select>
-               
-               </b-form-group>
-           </div>
+            </div>
 
             <!--Numero Identificacion -->
-            <div class="col-6">
             <b-form-group
-              
+              class="col-6"
               label="N_Identificacion:"
-              label-for="N_Identificacion">
+              label-for="N_Identificacion"
+            >
               <b-form-input
                 id="N_Identificacion"
                 v-model="datos_cliente.n_identificacion"
@@ -124,7 +122,6 @@
                 :formatter="format"
               ></b-form-input>
             </b-form-group>
-            </div>
 
             <!-- departamento -->
               <b-form-group class="col-6" label="departamento:" label-for="departamento">
@@ -158,7 +155,6 @@
                 :formatter="format"
               ></b-form-input>
             </b-form-group>
-
             <!-- Estado  -->
             <div class="col-6">
               <label for="estado">Estado:</label>

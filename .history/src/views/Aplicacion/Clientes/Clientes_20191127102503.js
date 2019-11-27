@@ -34,7 +34,9 @@ export default {
         { value: 2, text: "Cedula_Extrajera" }],
       Estado:[
         {value:"S", text:"Activo"}, 
-        {value:"N", text:"Inactivo"}],
+        {value:"N", text:"Inactivo"}
+      ]
+
       options: {
         pagination: { chunk: 5 },
         sortIcon: {
@@ -110,9 +112,6 @@ export default {
     });
   },
   methods: {
-    format(value, event) {
-      return value.toLowerCase()
-    },
     listado_clientes() {
       let datos_clientes = new Clientes_service();
       datos_clientes
@@ -159,8 +158,8 @@ export default {
         .get_municipios_x_departamento(this.datos_cliente.departamento)
         .then(response => {
           let munc = response.data;
-          //console.log('departamento ' + this.datos_cliente.departamento); 
-          //console.log('munipio ' +munc); 
+          console.log('departamento ' + this.datos_cliente.departamento); 
+          console.log('munipio ' +munc); 
           for(let i in munc){
             this.municipios.push({
               value:munc[i].id_municipio,

@@ -27,9 +27,4 @@ export default {
   background-color: #fff !important;
 }
 
-.modal-title{
-    color: #fff !important;
-    font-size: 16pt;
-}
-
 </style>

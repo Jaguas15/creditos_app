@@ -16,7 +16,7 @@ export default {
 @import "@/styles/bootstrap.scss";
 @import "@/styles/app.scss";
 
-.table > thead > tr, .modal-header {
+.table > thead > tr, .modal-title {
   background-color: #37bc9b !important;
 }
 .table > thead > tr > th {
@@ -25,11 +25,6 @@ export default {
 
 .table > tbody > tr {
   background-color: #fff !important;
-}
-
-.modal-title{
-    color: #fff !important;
-    font-size: 16pt;
 }
 
 </style>
