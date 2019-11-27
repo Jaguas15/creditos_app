@@ -34,7 +34,10 @@ export default {
             col_detalle: [
                 {
                     key: 'fecha_couta',
-                    label: 'Fecha Cuota'
+                    label: 'Fecha Cuota',
+                    formatter: value => {
+                        return this.$utility.formatDate(value)
+                    }
                 },
                 {
                     key: 'numero_couta',
@@ -74,7 +77,7 @@ export default {
             estudios: 0,
             credito_maestro: {},
             detalle_credito: [],
-            perPage: 5,
+            perPage: 10,
             currentPage: 1,
         };
     },

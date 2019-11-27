@@ -33,9 +33,6 @@ export default {
   background-color: #fff !important;
 }
 
-
-
-
 .modal-title{
     color: #fff !important;
     font-size: 16pt;
@@ -56,6 +53,12 @@ export default {
     border-radius: 0.25rem 0 0 0.25rem;
 }
 
+.align-right{
+  text-align: right !important;
+}
 
+.align-center{
+  text-align: center !important;
+}
 
 </style>

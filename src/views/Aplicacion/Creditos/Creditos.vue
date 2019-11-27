@@ -78,7 +78,7 @@
                         <b-input
                           v-model="n_cuotas"
                           id="cuotas"
-                          class="mb-2 mr-sm-2 mb-sm-0"
+                          class="mb-2 mr-sm-2 mb-sm-0 align-right"
                           placeholder="No. Cuotas"
                         ></b-input>
                       </div>
@@ -87,7 +87,7 @@
                         <b-input
                           v-model="tasa"
                           id="tasa"
-                          class="mb-2 mr-sm-2 mb-sm-0"
+                          class="mb-2 mr-sm-2 mb-sm-0  align-right"
                           placeholder="Tasa"
                         ></b-input>
                       </div>
@@ -96,16 +96,17 @@
                         <b-input
                           v-model="vr_capital"
                           id="capital"
-                          class="mb-2 mr-sm-2 mb-sm-0"
+                          class="mb-2 mr-sm-2 mb-sm-0  align-right"
                           placeholder="$ Capital"
-                        ></b-input>                        
+                          @keyup="$utility.formatPrice($event)"
+                        ></b-input>
                       </div>
                       <div class="col-2" v-if="estado_seleccion_cliente">
                         <label for="estudios">Estudios</label>
                         <b-input
                           v-model="estudios"
                           id="estudios"
-                          class="mb-2 mr-sm-2 mb-sm-0"
+                          class="mb-2 mr-sm-2 mb-sm-0  align-right"
                           placeholder="$ Estudios"
                         ></b-input>
                       </div>
@@ -143,7 +144,37 @@
                     reponsive="sm"
                     :per-page="perPage"
                     :current-page="currentPage"
-                  ></b-table>
+                  >
+                    <template slot="fecha_couta" slot-scope="data">
+                      <!-- `data.value` is the value after formatted by the Formatter -->
+                      <p class="align-center">{{ data.value }}</p>
+                    </template>
+
+                    <template slot="numero_couta" slot-scope="data">
+                      <!-- `data.value` is the value after formatted by the Formatter -->
+                      <p class="align-right">{{ data.value }}</p>
+                    </template>
+
+                    <template slot="valor_couta" slot-scope="data">
+                      <!-- `data.value` is the value after formatted by the Formatter -->
+                      <p class="align-right">{{ $utility.formatPrice(data.value) }}</p>
+                    </template>
+
+                    <template slot="v_capital" slot-scope="data">
+                      <!-- `data.value` is the value after formatted by the Formatter -->
+                      <p class="align-right">{{ $utility.formatPrice(data.value) }}</p>
+                    </template>
+
+                    <template slot="v_interes" slot-scope="data">
+                      <!-- `data.value` is the value after formatted by the Formatter -->
+                      <p class="align-right">{{ $utility.formatPrice(data.value) }}</p>
+                    </template>
+
+                    <template slot="v_saldo" slot-scope="data">
+                      <!-- `data.value` is the value after formatted by the Formatter -->
+                      <p class="align-right">{{ $utility.formatPrice(data.value) }}</p>
+                    </template>
+                  </b-table>
                   <b-pagination
                     v-model="currentPage"
                     :total-rows="rows"

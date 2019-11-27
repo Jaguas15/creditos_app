@@ -34,6 +34,12 @@ if (token) {
 import Datepicker from 'vuejs-datepicker'
 
 Vue.component('Datepicker', Datepicker);
+
+
+import {utility} from '@/utility';
+
+Vue.prototype.$utility = utility;
+
 //************************** */
 
 Vue.config.productionTip = false
