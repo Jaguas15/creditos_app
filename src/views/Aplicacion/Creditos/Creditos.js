@@ -109,7 +109,7 @@ export default {
                 });
         },
         onRowSelected(record) {
-            this.estado_seleccion_cliente = true;
+            this.estado_seleccion_cliente = !this.estado_seleccion_cliente;
         },
         onFiltered(filteredItems) {
             // Trigger pagination to update the number of buttons/pages due to filtering
@@ -232,6 +232,7 @@ export default {
                 this.vr_capital = 0,
                 this.estudios = 0
             this.detalle_credito = []
+            this.estado_seleccion_cliente = false;
         },
         fnGuardarCredito() {
             let credito = new Credito_service();
@@ -278,13 +279,13 @@ export default {
                     console.log(error.data);
                 });
 
-                this.$bvToast.toast("El crédito ha sido creado.", {
-                    title: 'Datos registrados!',
-                    variant: 'success',
-                    solid: true
-                })
+            this.$bvToast.toast("El crédito ha sido creado.", {
+                title: 'Datos registrados!',
+                variant: 'success',
+                solid: true
+            })
 
-                this.fnLimpiar();
+            this.fnLimpiar();
         },
         fnGuardarDetalleCredito(id_credito) {
             let credito_det = new Credito_service();
