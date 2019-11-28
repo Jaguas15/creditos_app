@@ -22,7 +22,7 @@ export default class Credito_service{
     }
 	
 	credito_detalle_create(data) {
-		return axios.post('http://127.0.0.1:8000/api/auth/credito_detalle/', data, {
+		return axios.post('http://127.0.0.1:8000/api/auth/credito_detalle_create/', data, {
             headers: {
                 'Content-Type':'application/json',
                 'X-Requested-With':'XMLHttpRequest'

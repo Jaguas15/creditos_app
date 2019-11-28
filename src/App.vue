@@ -20,9 +20,14 @@ export default {
   background-color: #37bc9b !important;
 }
 
-.btn-primary{
+.btn-primary, .page-item.active .page-link{
   background-color: #37bc9b !important;
   border-color: #31a588 !important;
+  color: #fff !important;
+}
+
+.page-link{
+  color: #37bc9b !important;
 }
 
 .table > thead > tr > th {
