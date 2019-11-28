@@ -25,7 +25,7 @@
       <template slot="action" slot-scope="props">
         <div>
           <button
-            class="btn btn-labeled btn-info mb-2 mr-1"
+            class="btn btn-labeled btn-warning mb-2 mr-1"
             type="button"
             @click.prevent="edit(props.row)"
             v-b-modal.clientesModal

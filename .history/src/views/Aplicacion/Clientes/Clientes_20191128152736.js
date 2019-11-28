@@ -231,12 +231,12 @@ export default {
           title: "Información",
           variant: "success",
           autoHideDelay: 5000,
-          appendToast: false
+          appendToast: append
         });
       }
 
       this.listado_clientes();
-      this.$bvModal.hide('clientesModal');
+      this.close();
     },
     validateBeforeSubmit(scope) {
       this.$validator.validateAll(scope).then(result => {

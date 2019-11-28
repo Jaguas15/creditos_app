@@ -16,7 +16,7 @@ export default {
 @import "@/styles/bootstrap.scss";
 @import "@/styles/app.scss";
 
-body{
+#app{
   font-size: 1.002rem !important;
 }
 

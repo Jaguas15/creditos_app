@@ -12,7 +12,7 @@
     </div>
 
     <button
-      class="btn btn-labeled btn-info mb-2 mr-1 float-right"
+      class="btn-lg btn-labeled btn-info mb-2 mr-1 float-right"
       type="button"
       @click="add_cliente"
       v-b-modal.clientesModal
@@ -169,8 +169,8 @@
               no-resize
             ></b-form-textarea>
           </div>
-   
-          <b-button type="submit" class="float-right mt-3" variant="success">Guardar</b-button>
+          <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-example')">Close Me</b-button>
+          <b-button type="submit" class="float-right" variant="success">Success</b-button>
         </form>
       </div>
     </b-modal>

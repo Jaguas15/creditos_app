@@ -25,13 +25,13 @@
       <template slot="action" slot-scope="props">
         <div>
           <button
-            class="btn btn-labeled btn-info mb-2 mr-1"
+            class="btn btn-labeled btn-info mb-2 mr-1 float-right"
             type="button"
             @click.prevent="edit(props.row)"
             v-b-modal.clientesModal
           >
             <span class="btn-label">
-              <i class="fa fa-edit"></i>
+              <i class="fa fa-pencil"></i>
             </span>Editar
           </button>
           <!-- <b-btn variant="outline-danger" class="btn-xs" @click.prevent="remove(props.row)">remove</b-btn> -->
@@ -169,8 +169,8 @@
               no-resize
             ></b-form-textarea>
           </div>
-   
-          <b-button type="submit" class="float-right mt-3" variant="success">Guardar</b-button>
+          <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-example')">Close Me</b-button>
+          <b-button type="submit" class="float-right" variant="success">Success</b-button>
         </form>
       </div>
     </b-modal>

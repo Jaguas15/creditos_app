@@ -21,7 +21,7 @@
         <i class="fa fa-plus"></i>
       </span>Nuevo
     </button>
-    <v-client-table :data="clientes" :columns="columns" :options="options">
+    <v-client-table class="small" :data="clientes" :columns="columns" :options="options">
       <template slot="action" slot-scope="props">
         <div>
           <button

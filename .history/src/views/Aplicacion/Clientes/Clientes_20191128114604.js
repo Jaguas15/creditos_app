@@ -4,10 +4,11 @@ import VeeValidate, { Validator } from "vee-validate";
 
 Vue.use(VeeValidate, {
   fieldsBagName: "formFields", // fix issue with b-table
-  localize: "es"
+  localize:"es"
 });
 
 //VeeValidate.Validator.localize("es");
+
 
 Vue.use(ClientTable);
 
@@ -30,12 +31,10 @@ export default {
       columns: ["id_cliente", "n_formato", "nombres", "apellidos", "action"],
       Identificacion: [
         { value: 1, text: "Cedula" },
-        { value: 2, text: "Cedula_Extrajera" }
-      ],
-      Estado: [
-        { value: "S", text: "Activo" },
-        { value: "N", text: "Inactivo" }
-      ],
+        { value: 2, text: "Cedula_Extrajera" }],
+      Estado:[
+        {value:"S", text:"Activo"}, 
+        {value:"N", text:"Inactivo"}],
       options: {
         pagination: { chunk: 5 },
         sortIcon: {
@@ -100,7 +99,7 @@ export default {
   mounted() {
     this.listado_clientes();
     this.listado_departamentos();
-    this.listado_municipios();
+    this.listado_municipios(); 
   },
   created() {
     // Add IDs for child rows functionality
@@ -112,28 +111,8 @@ export default {
   },
   methods: {
     format(value, event) {
-      return value.toLowerCase();
-    },
-    add_cliente() {
-      this.datos_cliente = {
-        id_cliente: 0,
-        n_formato: null,
-        nombres: null,
-        apellidos: null,
-        direccion: null,
-        telefono: null,
-        email: null,
-        identificacion: null,
-        n_identificacion: null,
-        departamento: null,
-        municipio: null,
-        barrio: null,
-        cobrador: null,
-        referencia: null,
-        observacion: null,
-        estado: null
-      };
-    },
+        return value.toLowerCase()
+      },
     listado_clientes() {
       let datos_clientes = new Clientes_service();
       datos_clientes
@@ -156,13 +135,13 @@ export default {
         .then(response => {
           let deps = response.data;
 
-          for (let i in deps) {
+          for(let i in deps){
             this.departamentos.push({
               value: deps[i].id_departamento,
-              text: deps[i].descrpcion
-            });
+              text: deps[i].descrpcion,
+            })
           }
-
+         
           // this.datos_cliente.departamento =  value;
           //this.loading = false;
         })
@@ -180,14 +159,16 @@ export default {
         .get_municipios_x_departamento(this.datos_cliente.departamento)
         .then(response => {
           let munc = response.data;
-          //console.log('departamento ' + this.datos_cliente.departamento);
-          //console.log('munipio ' +munc);
-          for (let i in munc) {
+          //console.log('departamento ' + this.datos_cliente.departamento); 
+          //console.log('munipio ' +munc); 
+          for(let i in munc){
             this.municipios.push({
               value: munc[i].id_municipio,
               text: munc[i].descripcion
-            });
+            }) 
           }
+
+    
         })
         .catch(error => {
           console.log(error.data);
@@ -207,36 +188,36 @@ export default {
             console.log(error.data);
           });
 
-        this.$bvToast.toast(
-          "La información ha sido actualizada exitosamente.",
-          {
-            title: "Información",
-            variant: "success",
-            autoHideDelay: 5000,
-            solid: true
-          }
-        );
+        this.$bvToast.toast('La información ha sido actualizada exitosamente.', {
+          title: 'Información',
+          variant: 'success',
+          autoHideDelay: 5000,
+          appendToast: append
+        })
+
       } else {
         datos_clientes
           .cliente_create(this.datos_cliente)
           .then(response => {
             console.log(response);
-            console.log("entrando a insertar");
+            console.log('entrando a insertar')
           })
           .catch(error => {
             console.log(error.data);
           });
 
-        this.$bvToast.toast("La información ha sido almacenada exitosamente.", {
-          title: "Información",
-          variant: "success",
+        this.$bvToast.toast('La información ha sido almacenada exitosamente.', {
+          title: 'Información',
+          variant: 'success',
           autoHideDelay: 5000,
-          appendToast: false
-        });
+          appendToast: append
+        })
+        
       }
-
+      
       this.listado_clientes();
-      this.$bvModal.hide('clientesModal');
+      this.close();
+        
     },
     validateBeforeSubmit(scope) {
       this.$validator.validateAll(scope).then(result => {

@@ -236,7 +236,7 @@ export default {
       }
 
       this.listado_clientes();
-      this.$bvModal.hide('clientesModal');
+      this.close();
     },
     validateBeforeSubmit(scope) {
       this.$validator.validateAll(scope).then(result => {
