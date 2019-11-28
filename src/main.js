@@ -32,11 +32,17 @@ if (token) {
 //Componentes globales
 /*import VModal from 'vue-js-modal'*/
 import Datepicker from 'vuejs-datepicker'
+import Toasted from 'vue-toasted';
+import Notifications from 'vue-notification'
+
+Vue.use(Toasted)
+Vue.use(Notifications)
+
 
 Vue.component('Datepicker', Datepicker);
 
 
-import {utility} from '@/utility';
+import { utility } from '@/utility';
 
 Vue.prototype.$utility = utility;
 
@@ -52,8 +58,8 @@ Vue.use(VueAxios, axios);
 const i18n = new VueI18Next(i18next);
 
 new Vue({
-    i18n,
-    router,
-    //store_login,
-    render: h => h(App)
+  i18n,
+  router,
+  //store_login,
+  render: h => h(App)
 }).$mount('#app')
