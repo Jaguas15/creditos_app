@@ -2,11 +2,16 @@
 import "loaders.css/loaders.css";
 import "spinkit/css/spinkit.css";
 
+import inputPrice from './../../../components/inputPrice/inputPrice';
+
 import Clientes_service from "./../../../_services/clientes_service";
 import Credito_service from "./../../../_services/creditos_service";
 
 export default {
     name: 'Creditos',
+    components: {
+        'input-price': inputPrice
+    },
     data() {
         return {
             titulo: "Registro de Creditos",
@@ -28,8 +33,7 @@ export default {
                 {
                     key: 'apellidos',
                     label: 'Apellidos',
-                },
-                'options'
+                }
             ],
             col_detalle: [
                 {
@@ -79,12 +83,14 @@ export default {
             detalle_credito: [],
             perPage: 10,
             currentPage: 1,
+            isInputActive: false
         };
     },
     computed: {
         rows() {
             return this.detalle_credito.length;
         },
+
     },
     methods: {
         fn_buscar_cliente() {
@@ -101,7 +107,7 @@ export default {
                 .catch(error => {
                     console.log(error.data);
                 });
-        },        
+        },
         onRowSelected(record) {
             this.estado_seleccion_cliente = true;
         },
@@ -188,24 +194,44 @@ export default {
         fn_valida_form(event) {
 
             if (this.cedula_buscar == "" || this.cedula_buscar == null) { //Valida si la cedula es nula
-                this.$toast.add({
-                    severity: "error",
-                    summary: "Error",
-                    detail: "No ha ingresado una cedula.",
-                    life: 3000
-                });
+
+                document.querySelector('#cedula').setAttribute('class', 'form-control is-invalid')
+                document.querySelector('#cedula').setAttribute('aria-invalid', true)
+
+                setTimeout(function () {
+                    document.querySelector('#cedula').setAttribute('class', 'form-control')
+                }, 3000);
+
+                this.$bvToast.toast("No ha ingresado una cedula.", {
+                    title: 'Error!',
+                    variant: 'danger',
+                    solid: true
+                })
+
                 event.preventDefault();
-            } else if (this.fecha == "" || this.fecha == null) { //Valida si la fecha es nula 
-                this.$toast.add({
-                    severity: "error",
-                    summary: "Error",
-                    detail: "No ha seleccionado una fecha.",
-                    life: 3000
-                });
+            } else if (this.detalle_credito.length == 0) { //Valida si la fecha es nula 
+
+                this.$bvToast.toast("No ha realizado cálculo del crédito.", {
+                    title: 'Error!',
+                    variant: 'danger',
+                    solid: true
+                })
+
                 event.preventDefault();
             } else {
                 this.fnGuardarCredito(); // Esta funcion no se llama hasta que deje de cumplir las condiciones de arriba
             }
+        },
+        fnLimpiar() {
+            this.cedula_buscar = null;
+            this.clientes = [],
+                this.fecha = new Date;
+            this.periodo = 'SEMANAL',
+                this.n_cuotas = 0,
+                this.tasa = 0,
+                this.vr_capital = 0,
+                this.estudios = 0
+            this.detalle_credito = []
         },
         fnGuardarCredito() {
             let credito = new Credito_service();
@@ -224,13 +250,13 @@ export default {
                 total_saldo += Number(this.detalle_credito[i].v_saldo);
             }
 
-            console.log(this.formatDate(this.fecha));
+            //console.log(this.formatDate(this.fecha));
 
             // Datos Maestro
             this.credito_maestro = {
                 id_cliente: this.cliente_seleccionado.id_clientes,
-                fecha_credito: this.$utilidades.formatDate(this.fecha),
-                fecha_vencimiento: this.$utilidades.formatDate(fecha_vence),
+                fecha_credito: this.$utility.formatDate(this.fecha),
+                fecha_vencimiento: this.$utility.formatDate(fecha_vence),
                 vlor_capital: total_capital,
                 vlor_interes: total_interes,
                 vlor_estudios: this.estudios,
@@ -251,6 +277,14 @@ export default {
                 .catch(error => {
                     console.log(error.data);
                 });
+
+                this.$bvToast.toast("El crédito ha sido creado.", {
+                    title: 'Datos registrados!',
+                    variant: 'success',
+                    solid: true
+                })
+
+                this.fnLimpiar();
         },
         fnGuardarDetalleCredito(id_credito) {
             let credito_det = new Credito_service();
@@ -277,4 +311,4 @@ export default {
                 });
         }
     }
-};
+}
