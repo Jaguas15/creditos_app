@@ -59,28 +59,6 @@ export default {
           id_cliente: "Código"
         }
       },
-
-      fields: [
-        { key: 'id_cliente', label: 'Codigo', sortable: true, sortDirection: 'desc' },
-        { key: 'nombres', label: 'Nombres', sortable: true, sortDirection: 'desc' },
-        { key: 'apellidos', label: 'Apellidos', sortable: true, sortDirection: 'desc' },
-        { key: 'direccion', label: 'Direccion', sortable: true, sortDirection: 'desc' },
-        { key: 'telefono', label: 'Telefono', sortable: true, sortDirection: 'desc' },
-        { key: 'n_identificacion', label: 'Identificacion', sortable: true, sortDirection: 'desc' },
-        { key: 'age', label: 'Person age', sortable: true, class: 'text-center' },
-        {
-          key: 'estado',
-          label: 'Estado',
-          formatter: (value, key, item) => {
-            return value ? 'Activo' : 'inactivo'
-          },
-          sortable: true,
-          sortByFormatted: true,
-          filterByFormatted: true
-        },
-        { key: 'actions', label: 'Actions' }
-      ],
-
       demo: {
         required: "",
         email: "",
@@ -269,7 +247,37 @@ export default {
         console.log("Correct them errors!");
       });
     },
-    
+    fields: [
+      { key: 'name', label: 'Person Full name', sortable: true, sortDirection: 'desc' },
+      { key: 'age', label: 'Person age', sortable: true, class: 'text-center' },
+      {
+        key: 'isActive',
+        label: 'is Active',
+        formatter: (value, key, item) => {
+          return value ? 'Yes' : 'No'
+        },
+        sortable: true,
+        sortByFormatted: true,
+        filterByFormatted: true
+      },
+      { key: 'actions', label: 'Actions' }
+    ],
+    totalRows: 1,
+    currentPage: 1,
+    perPage: 5,
+    pageOptions: [5, 10, 15],
+    sortBy: '',
+    sortDesc: false,
+    sortDirection: 'asc',
+    filter: null,
+    filterOn: [],
+    infoModal: {
+      id: 'info-modal',
+      title: '',
+      content: ''
+    }
+  }
+},
     edit(row) {
       Object.assign(this.datos_cliente, row);
     },
@@ -277,7 +285,4 @@ export default {
       this.tableData = [];
     }
   }
-
-
-  
 };

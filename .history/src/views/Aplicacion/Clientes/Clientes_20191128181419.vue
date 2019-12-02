@@ -25,7 +25,7 @@
        <template>
   <div>
     <b-table
-      :items="clientes"
+      :items="datos_cliente"
       :fields="fields"
       :sort-by.sync="sortBy"
       :sort-desc.sync="sortDesc"

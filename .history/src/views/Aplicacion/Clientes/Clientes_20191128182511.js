@@ -69,10 +69,10 @@ export default {
         { key: 'n_identificacion', label: 'Identificacion', sortable: true, sortDirection: 'desc' },
         { key: 'age', label: 'Person age', sortable: true, class: 'text-center' },
         {
-          key: 'estado',
-          label: 'Estado',
+          key: 'isActive',
+          label: 'is Active',
           formatter: (value, key, item) => {
-            return value ? 'Activo' : 'inactivo'
+            return value ? 'Yes' : 'No'
           },
           sortable: true,
           sortByFormatted: true,

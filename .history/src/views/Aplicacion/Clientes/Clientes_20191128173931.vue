@@ -22,22 +22,42 @@
       </span>Nuevo
     </button>
 
-       <template>
-  <div>
-    <b-table
-      :items="clientes"
+        <b-table
+      show-empty
+      small
+      stacked="md"
+      :items="items"
       :fields="fields"
+      :current-page="currentPage"
+      :per-page="perPage"
+      :filter="filter"
+      :filterIncludedFields="filterOn"
       :sort-by.sync="sortBy"
       :sort-desc.sync="sortDesc"
-      responsive="sm"
-    ></b-table>
+      :sort-direction="sortDirection"
+      @filtered="onFiltered"
+    >
+      <template v-slot:cell(name)="row">
+        {{ row.value.first }} {{ row.value.last }}
+      </template>
 
-    <div>
-      Sorting By: <b>{{ sortBy }}</b>, Sort Direction:
-      <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
-    </div>
-  </div>
-</template>
+      <template v-slot:cell(actions)="row">
+        <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+          Info modal
+        </b-button>
+        <b-button size="sm" @click="row.toggleDetails">
+          {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+        </b-button>
+      </template>
+
+      <template v-slot:row-details="row">
+        <b-card>
+          <ul>
+            <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
+          </ul>
+        </b-card>
+      </template>
+    </b-table>
     <!--<v-client-table :data="clientes" :columns="columns" :options="options">
       <template slot="action" slot-scope="props">
         <div>

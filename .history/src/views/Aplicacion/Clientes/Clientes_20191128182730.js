@@ -70,7 +70,7 @@ export default {
         { key: 'age', label: 'Person age', sortable: true, class: 'text-center' },
         {
           key: 'estado',
-          label: 'Estado',
+          label: 'Activo',
           formatter: (value, key, item) => {
             return value ? 'Activo' : 'inactivo'
           },

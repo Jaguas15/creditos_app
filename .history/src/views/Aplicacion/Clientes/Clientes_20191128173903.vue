@@ -21,23 +21,6 @@
         <i class="fa fa-plus"></i>
       </span>Nuevo
     </button>
-
-       <template>
-  <div>
-    <b-table
-      :items="clientes"
-      :fields="fields"
-      :sort-by.sync="sortBy"
-      :sort-desc.sync="sortDesc"
-      responsive="sm"
-    ></b-table>
-
-    <div>
-      Sorting By: <b>{{ sortBy }}</b>, Sort Direction:
-      <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
-    </div>
-  </div>
-</template>
     <!--<v-client-table :data="clientes" :columns="columns" :options="options">
       <template slot="action" slot-scope="props">
         <div>
