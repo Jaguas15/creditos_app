@@ -57,8 +57,7 @@
       responsive="sm"
  
       :filterIncludedFields="filterOn"
-    :per-page="perPage"
-                        :current-page="currentPage"
+    
       :sort-direction="sortDirection"
       @filtered="onFiltered"
     ></b-table>
@@ -66,7 +65,7 @@
      <b-col sm="7" md="6" class="my-1">
         <b-pagination
           v-model="currentPage"
-          :total-rows="totalRows"
+          :total-rows="sortOptions"
           :per-page="perPage"
           align="fill"
           size="sm"

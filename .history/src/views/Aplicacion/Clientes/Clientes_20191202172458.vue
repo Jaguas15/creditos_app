@@ -57,8 +57,7 @@
       responsive="sm"
  
       :filterIncludedFields="filterOn"
-    :per-page="perPage"
-                        :current-page="currentPage"
+    
       :sort-direction="sortDirection"
       @filtered="onFiltered"
     ></b-table>
@@ -73,7 +72,7 @@
           class="my-0"
         ></b-pagination>
       </b-col>
-    
+    </b-row>
 
     <div>
       Sorting By: <b>{{ sortBy }}</b>, Sort Direction:

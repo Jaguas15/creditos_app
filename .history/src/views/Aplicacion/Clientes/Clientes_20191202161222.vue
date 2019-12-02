@@ -31,7 +31,7 @@
           label-align-sm="right"
           label-size="sm"
           label-for="filterInput"
-          class="mb-0 float-left"
+          class="float-left mb-0"
         >
           <b-input-group size="sm">
             <b-form-input
@@ -57,12 +57,12 @@
       responsive="sm"
  
       :filterIncludedFields="filterOn"
-    :per-page="perPage"
-                        :current-page="currentPage"
+    
       :sort-direction="sortDirection"
       @filtered="onFiltered"
     ></b-table>
    
+    
      <b-col sm="7" md="6" class="my-1">
         <b-pagination
           v-model="currentPage"
@@ -73,7 +73,8 @@
           class="my-0"
         ></b-pagination>
       </b-col>
-    
+
+
 
     <div>
       Sorting By: <b>{{ sortBy }}</b>, Sort Direction:

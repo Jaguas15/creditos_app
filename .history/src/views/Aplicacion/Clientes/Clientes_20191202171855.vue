@@ -22,6 +22,26 @@
       </span>Nuevo
     </button>
 
+     <b-col sm="5" md="6" class="my-1">
+        <b-form-group
+          label="Per page"
+          label-cols-sm="6"
+          label-cols-md="4"
+          label-cols-lg="3"
+          label-align-sm="right"
+          label-size="sm"
+          label-for="perPageSelect"
+          class="mb-0"
+        >
+          <b-form-select
+            v-model="perPage"
+            id="perPageSelect"
+            size="sm"
+            :options="pageOptions"
+          ></b-form-select>
+        </b-form-group>
+      </b-col>
+
 <template>
   <div>
       <!-- <b-col lg="6" class="my-1"> -->
@@ -31,7 +51,7 @@
           label-align-sm="right"
           label-size="sm"
           label-for="filterInput"
-          class="mb-0 float-left"
+          class="float-left mb-0"
         >
           <b-input-group size="sm">
             <b-form-input
@@ -48,21 +68,21 @@
       <!-- </b-col> -->
 
     <b-table
-
+show-empty
       :items="clientes"
       :fields="fields"
       :sort-by.sync="sortBy"
       :sort-desc.sync="sortDesc"
       :filter="filter"
       responsive="sm"
- 
       :filterIncludedFields="filterOn"
-    :per-page="perPage"
-                        :current-page="currentPage"
+      :current-page="currentPage"
+      :per-page="perPage"
       :sort-direction="sortDirection"
       @filtered="onFiltered"
     ></b-table>
    
+    
      <b-col sm="7" md="6" class="my-1">
         <b-pagination
           v-model="currentPage"
@@ -73,7 +93,8 @@
           class="my-0"
         ></b-pagination>
       </b-col>
-    
+
+
 
     <div>
       Sorting By: <b>{{ sortBy }}</b>, Sort Direction:

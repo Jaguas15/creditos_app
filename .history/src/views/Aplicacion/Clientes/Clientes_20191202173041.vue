@@ -22,9 +22,9 @@
       </span>Nuevo
     </button>
 
-<template>
-  <div>
-      <!-- <b-col lg="6" class="my-1"> -->
+    <template>
+      <div>
+        <!-- <b-col lg="6" class="my-1"> -->
         <b-form-group
           label="Buscar"
           label-cols-sm="3"
@@ -38,68 +38,48 @@
               v-model="filter"
               type="search"
               id="filterInput"
-              placeholder="Texto a buscar"              
+              placeholder="Texto a buscar"
             ></b-form-input>
             <b-input-group-append>
               <b-button :disabled="!filter" @click="filter = ''">Limpiar</b-button>
             </b-input-group-append>
           </b-input-group>
         </b-form-group>
-      <!-- </b-col> -->
+        <!-- </b-col> -->
 
-    <b-table
+        <b-table
+          :items="clientes"
+          :fields="fields"
+          :sort-by.sync="sortBy"
+          :sort-desc.sync="sortDesc"
+          :filter="filter"
+          responsive="sm"
+          :filterIncludedFields="filterOn"
+          :sort-direction="sortDirection"
+          @filtered="onFiltered"
+        ></b-table>
 
-      :items="clientes"
-      :fields="fields"
-      :sort-by.sync="sortBy"
-      :sort-desc.sync="sortDesc"
-      :filter="filter"
-      responsive="sm"
- 
-      :filterIncludedFields="filterOn"
-    :per-page="perPage"
-                        :current-page="currentPage"
-      :sort-direction="sortDirection"
-      @filtered="onFiltered"
-    ></b-table>
-   
-     <b-col sm="7" md="6" class="my-1">
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="totalRows"
-          :per-page="perPage"
-          align="fill"
-          size="sm"
-          class="my-0"
-        ></b-pagination>
-      </b-col>
-    
+        <b-col sm="7" md="6" class="my-1">
+          <b-pagination
+            v-model="currentPage"
+            :total-rows="totalRows"
+            :per-page="perPage"
+            align="fill"
+            size="sm"
+            class="my-0"
+          ></b-pagination>
+        </b-col>
 
-    <div>
-      Sorting By: <b>{{ sortBy }}</b>, Sort Direction:
-      <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
-    </div>
-  </div>
-</template>
-    <!--<v-client-table :data="clientes" :columns="columns" :options="options">
-      <template slot="action" slot-scope="props">
         <div>
-          <button
-            class="btn btn-labeled btn-info mb-2 mr-1"
-            type="button"
-            @click.prevent="edit(props.row)"
-            v-b-modal.clientesModal
-          >
-            <span class="btn-label">
-              <i class="fa fa-edit"></i>
-            </span>Editar
-          </button>
-          <!-- <b-btn variant="outline-danger" class="btn-xs" @click.prevent="remove(props.row)">remove</b-btn> -->
-      <!--  </div>
-      </template>
-    </v-client-table> -->
+          Sorting By:
+          <b>{{ sortBy }}</b>, Sort Direction:
+          <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
+        </div>
+      </div>
+    </template>
+  </ContentWrapper>
+</template>
 
-    <!-- Modal -->
 
     <b-modal id="clientesModal" size="lg" :title="title" hide-footer>
       <div class="d-block">

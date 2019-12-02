@@ -133,7 +133,7 @@ export default {
     this.listado_clientes();
     this.listado_departamentos();
     this.listado_municipios();
-    this.totalRows = this.clientes.length;
+    this.totalRows = this.clientes.length
   },
   created() {
     // Add IDs for child rows functionality
@@ -151,7 +151,7 @@ export default {
         .map(f => {
           return { text: f.label, value: f.key }
         })
-    },
+    }
   },
   methods: {
     format(value, event) {
@@ -194,8 +194,6 @@ export default {
         .catch(error => {
           console.log(error.data);
         });
-
-        this.totalRows = this.clientes.length;
     },
 
     listado_departamentos() {

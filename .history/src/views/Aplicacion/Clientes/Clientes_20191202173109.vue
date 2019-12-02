@@ -57,8 +57,7 @@
       responsive="sm"
  
       :filterIncludedFields="filterOn"
-    :per-page="perPage"
-                        :current-page="currentPage"
+    
       :sort-direction="sortDirection"
       @filtered="onFiltered"
     ></b-table>

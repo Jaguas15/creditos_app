@@ -26,22 +26,22 @@
   <div>
       <!-- <b-col lg="6" class="my-1"> -->
         <b-form-group
-          label="Buscar"
+          label="Filter"
           label-cols-sm="3"
-          label-align-sm="right"
+          label-align-sm="left"
           label-size="sm"
           label-for="filterInput"
-          class="mb-0 float-left"
+          class="mb-0"
         >
           <b-input-group size="sm">
             <b-form-input
               v-model="filter"
               type="search"
               id="filterInput"
-              placeholder="Texto a buscar"              
+              placeholder="Texto"
             ></b-form-input>
             <b-input-group-append>
-              <b-button :disabled="!filter" @click="filter = ''">Limpiar</b-button>
+              <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
             </b-input-group-append>
           </b-input-group>
         </b-form-group>
@@ -57,23 +57,11 @@
       responsive="sm"
  
       :filterIncludedFields="filterOn"
-    :per-page="perPage"
-                        :current-page="currentPage"
+    
       :sort-direction="sortDirection"
       @filtered="onFiltered"
     ></b-table>
    
-     <b-col sm="7" md="6" class="my-1">
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="totalRows"
-          :per-page="perPage"
-          align="fill"
-          size="sm"
-          class="my-0"
-        ></b-pagination>
-      </b-col>
-    
 
     <div>
       Sorting By: <b>{{ sortBy }}</b>, Sort Direction:

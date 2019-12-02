@@ -27,15 +27,6 @@ export default {
       tableData: [],
       departamentos: [],
       municipios: [],
-      filter:null,
-      sortBy: '',
-      sortDesc: false,
-      totalRows: 3,
-      currentPage: 1,
-      perPage: 5,
-      pageOptions: [5, 10, 15],
-      filterOn: [],
-      sortDirection: 'asc',
       columns: ["id_cliente", "n_formato", "nombres", "apellidos", "action"],
       Identificacion: [
         { value: 1, text: "Cedula" },
@@ -133,7 +124,6 @@ export default {
     this.listado_clientes();
     this.listado_departamentos();
     this.listado_municipios();
-    this.totalRows = this.clientes.length;
   },
   created() {
     // Add IDs for child rows functionality
@@ -151,17 +141,11 @@ export default {
         .map(f => {
           return { text: f.label, value: f.key }
         })
-    },
+    }
   },
   methods: {
     format(value, event) {
       return value.toLowerCase();
-    },
-    onFiltered(filteredItems) {
-      // Trigger pagination to update the number of buttons/pages due to filtering
-      this.totalRows = filteredItems.length
-      this.currentPage = 1
-      
     },
     add_cliente() {
       this.datos_cliente = {
@@ -194,8 +178,6 @@ export default {
         .catch(error => {
           console.log(error.data);
         });
-
-        this.totalRows = this.clientes.length;
     },
 
     listado_departamentos() {
