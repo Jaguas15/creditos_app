@@ -82,7 +82,7 @@ export default {
           label: 'Estado', 
           class: 'text-center',
           formatter: (value, key, item) => {
-            return value ? 'Activo' : 'inactivo'
+            return value ?  <b-button variant="success">Activo</b-button> : 'inactivo'
           },
         
           sortable: true,

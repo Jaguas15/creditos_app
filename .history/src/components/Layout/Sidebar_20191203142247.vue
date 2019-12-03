@@ -24,8 +24,8 @@
                 </div>
                 <!-- Name and Job-->
                 <div class="user-block-info">
-                  <span class="user-block-name">Hola, {{ nombreLogged }}!!</span>
-                  <span class="user-block-role">Desarrollador</span>
+                  <span class="user-block-name">Hello, {{ nombreLogged }}</span>
+                  <span class="user-block-role">Designer</span>
                   <span @click="logout" class="user-block-role">Cerrar sesión</span>
                 </div>
               </div>
@@ -114,15 +114,13 @@ export default {
     };
   },
   mounted() {
-    SidebarRun(this.$router, this.closeSidebar.bind(this));    
+    SidebarRun(this.$router, this.closeSidebar.bind(this));
+    this.nameLogged();
   },
   computed: {
     ...mapState({
       showUserBlock: state => state.setting.showUserBlock
     })
-  },
-  created() {
-this.nombreLogged = store_login.state.nombre
   },
   watch: {
     $route(to, from) {
@@ -168,6 +166,10 @@ this.nombreLogged = store_login.state.nombre
           this.collapse[c] = false;
       }
       this.collapse[collapseName] = !this.collapse[collapseName];
+    },
+    nameLogged() {
+      this.nombreLogged = store_login.state.status;
+      console.log(this.nombreLogged)
     },
     logout() {
       store_login.dispatch("logout").then(() => {

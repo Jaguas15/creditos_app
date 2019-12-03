@@ -52,7 +52,7 @@
                         select-mode="single"
                         reponsive="sm"
                       >
-                        <template slot="seleccionado" slot-scope="{rowSelected}">
+                        <template slot="selected" slot-scope="{rowSelected}">
                           <template v-if="rowSelected">
                             <span aria-hidden="true">&check;</span>
                             <span class="sr-only">Selected</span>
@@ -68,6 +68,8 @@
                   <!-- END card-->
                 </div>
               </div>
+
+              {{estado_seleccion_cliente.length}}
 
               <div class="row" v-if="estado_seleccion_cliente.length>0">
                 <div class="col-12">

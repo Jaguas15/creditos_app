@@ -18,7 +18,7 @@ export default {
       loading: false,
       cedula_buscar: null,
       col_clientes: [
-        "seleccionado",
+        'selected',
         {
           key: "id_cliente",
           label: "Código"
@@ -36,7 +36,7 @@ export default {
           label: "Apellidos"
         }
       ],
-      col_detalle: [
+      col_detalle: [          
         {
           key: "fecha_couta",
           label: "Fecha Cuota",
@@ -97,21 +97,17 @@ export default {
     fn_buscar_cliente() {
       let cli = new Clientes_service();
 
-      if (this.cedula_buscar != "") {
-        this.loading = true;
+      this.loading = true;
 
-        cli
-          .cliente_x_cedula_get(this.cedula_buscar)
-          .then(response => {
-            this.clientes = response.data;
-            this.loading = false;
-          })
-          .catch(error => {
-            console.log(error.data);
-          });
-      }else{
-          this.clientes = []
-      }
+      cli
+        .cliente_x_cedula_get(this.cedula_buscar)
+        .then(response => {
+          this.clientes = response.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          console.log(error.data);
+        });
     },
     onRowSelected(record) {
       this.estado_seleccion_cliente = record;
@@ -232,14 +228,15 @@ export default {
         this.fnGuardarCredito(); // Esta funcion no se llama hasta que deje de cumplir las condiciones de arriba
       }
     },
-    fnLimpiar() {
+    fnLimpiar() {      
       this.cedula_buscar = null;
-      (this.clientes = []), (this.fecha = new Date());
+      (this.clientes = []), 
+      (this.fecha = new Date());
       (this.periodo = "SEMANAL"),
         (this.n_cuotas = 0),
         (this.tasa = 0),
         (this.vr_capital = 0),
-        (this.estudios = 0);
+        (this.estudios = 0);      
     },
     fnGuardarCredito() {
       let credito = new Credito_service();
@@ -324,8 +321,9 @@ export default {
           console.log(error.data);
         });
 
-      this.estado_seleccion_cliente = [];
-      this.detalle_credito = [];
+        this.cliente_seleccionado = []
+        this.detalle_credito = []
+
     }
   }
 };

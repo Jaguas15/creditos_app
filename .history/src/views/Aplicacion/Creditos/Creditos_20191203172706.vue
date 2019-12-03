@@ -52,16 +52,16 @@
                         select-mode="single"
                         reponsive="sm"
                       >
-                        <template slot="seleccionado" slot-scope="{rowSelected}">
-                          <template v-if="rowSelected">
-                            <span aria-hidden="true">&check;</span>
-                            <span class="sr-only">Selected</span>
-                          </template>
-                          <template v-else>
-                            <span aria-hidden="true">&nbsp;</span>
-                            <span class="sr-only">Not selected</span>
-                          </template>
-                        </template>
+                      <template slot="selected" slot-scope="rowSelected">
+        <template v-if="rowSelected">
+          <span aria-hidden="true">&check;</span>
+          <span class="sr-only">Selected</span>
+        </template>
+        <template v-else>
+          <span aria-hidden="true">&nbsp;</span>
+          <span class="sr-only">Not selected</span>
+        </template>
+      </template>
                       </b-table>
                     </div>
                   </div>
@@ -69,76 +69,76 @@
                 </div>
               </div>
 
-              <div class="row" v-if="estado_seleccion_cliente.length>0">
-                <div class="col-12">
-                  <div class="card card-default">
-                    <div class="card-header text-truncate">
-                      <h5>DILIGENCIAMIENTO DEL CREDITO</h5>
-                    </div>
-                    <div class="card-body">
-                      <div class="container-fluid">
-                        <div class="row">
-                          <div class="col-2">
-                            <label for="fecha">Fecha</label>
-                            <datepicker id="fecha" v-model="fecha" :bootstrapStyling="true" />
-                          </div>
-                          <div class="col-2">
-                            <label for="periodo">Periodo</label>
-                            <b-form-select id="periodo" v-model="periodo" :options="periodos"></b-form-select>
-                          </div>
-                          <div class="col-2">
-                            <label for="cuotas">Cuotas</label>
-                            <b-input
-                              v-model="n_cuotas"
-                              id="cuotas"
-                              class="mb-2 mr-sm-2 mb-sm-0 align-right"
-                              placeholder="No. Cuotas"
-                            ></b-input>
-                          </div>
-                          <div class="col-2">
-                            <label for="tasa">Tasa</label>
-                            <b-input
-                              v-model="tasa"
-                              id="tasa"
-                              class="mb-2 mr-sm-2 mb-sm-0 align-right"
-                              placeholder="Tasa"
-                            ></b-input>
-                          </div>
-                          <div class="col-2">
-                            <label for="capital">Vr. Capital</label>
-                            <!-- <b-input
+              <div class="row" v-if="estado_seleccion_cliente">          
+                  <div class="col-12">
+                    <div class="card card-default">
+                      <div class="card-header text-truncate">
+                        <h5>DILIGENCIAMIENTO DEL CREDITO</h5>
+                      </div>
+                      <div class="card-body">
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-2">
+                              <label for="fecha">Fecha</label>
+                              <datepicker id="fecha" v-model="fecha" :bootstrapStyling="true" />
+                            </div>
+                            <div class="col-2">
+                              <label for="periodo">Periodo</label>
+                              <b-form-select id="periodo" v-model="periodo" :options="periodos"></b-form-select>
+                            </div>
+                            <div class="col-2">
+                              <label for="cuotas">Cuotas</label>
+                              <b-input
+                                v-model="n_cuotas"
+                                id="cuotas"
+                                class="mb-2 mr-sm-2 mb-sm-0 align-right"
+                                placeholder="No. Cuotas"
+                              ></b-input>
+                            </div>
+                            <div class="col-2">
+                              <label for="tasa">Tasa</label>
+                              <b-input
+                                v-model="tasa"
+                                id="tasa"
+                                class="mb-2 mr-sm-2 mb-sm-0 align-right"
+                                placeholder="Tasa"
+                              ></b-input>
+                            </div>
+                            <div class="col-2">
+                              <label for="capital">Vr. Capital</label>
+                              <!-- <b-input
                           v-model="vr_capital"
                           id="capital"
                           class="mb-2 mr-sm-2 mb-sm-0  align-right"
                           placeholder="$ Capital"                           
-                            ></b-input>-->
-                            <input-price v-model="vr_capital"></input-price>
-                          </div>
-                          <div class="col-2">
-                            <label for="estudios">Estudios</label>
-                            <!-- <b-input
+                              ></b-input>-->
+                              <input-price v-model="vr_capital"></input-price>
+                            </div>
+                            <div class="col-2">
+                              <label for="estudios">Estudios</label>
+                              <!-- <b-input
                           v-model="estudios"
                           id="estudios"
                           class="mb-2 mr-sm-2 mb-sm-0  align-right"
                           placeholder="$ Estudios"
-                            ></b-input>-->
-                            <input-price v-model="estudios"></input-price>
+                              ></b-input>-->
+                              <input-price v-model="estudios"></input-price>
+                            </div>
                           </div>
-                        </div>
-                        <div class="row mt-3">
-                          <div class="col-12">
-                            <b-button
-                              style="float: right !important;"
-                              variant="primary"
-                              :disabled="fecha != '' && periodo != '' && n_cuotas > 0 && tasa > 0 && vr_capital > 0 && estudios >= 0 ? false: true"
-                              @click="fnCalcularDiferido()"
-                            >Calcular</b-button>
+                          <div class="row mt-3">
+                            <div class="col-12">
+                              <b-button
+                                style="float: right !important;"
+                                variant="primary"
+                                :disabled="fecha != '' && periodo != '' && n_cuotas > 0 && tasa > 0 && vr_capital > 0 && estudios >= 0 ? false: true"
+                                @click="fnCalcularDiferido()"
+                              >Calcular</b-button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </div>            
               </div>
 
               <div class="row" v-if="detalle_credito.length > 0">

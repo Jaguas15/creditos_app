@@ -24,9 +24,9 @@
                 </div>
                 <!-- Name and Job-->
                 <div class="user-block-info">
-                  <span class="user-block-name">Hola, {{ nombreLogged }}!!</span>
-                  <span class="user-block-role">Desarrollador</span>
-                  <span @click="logout" class="user-block-role">Cerrar sesión</span>
+                  <span class="user-block-name">Hello, Mike</span>
+                  <span class="user-block-role">Designer</span>
+                  <router-link :to="logout" class="user-block-role"></router-link>
                 </div>
               </div>
             </b-collapse>
@@ -98,82 +98,70 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import SidebarRun from "./Sidebar.run.js";
-import Menu from "../../menu.js";
 
-import store_login from "./../../_store/store";
+    import { mapState } from 'vuex';
+    import SidebarRun from './Sidebar.run.js';
+    import Menu from '../../menu.js';
 
-export default {
-  name: "Sidebar",
-  data() {
-    return {
-      Menu,
-      collapse: this.buildCollapseList(),
-      nombreLogged: null
-    };
-  },
-  mounted() {
-    SidebarRun(this.$router, this.closeSidebar.bind(this));    
-  },
-  computed: {
-    ...mapState({
-      showUserBlock: state => state.setting.showUserBlock
-    })
-  },
-  created() {
-this.nombreLogged = store_login.state.nombre
-  },
-  watch: {
-    $route(to, from) {
-      this.closeSidebar();
-    }
-  },
-  methods: {
-    closeSidebar() {
-      this.$store.commit("changeSetting", {
-        name: "asideToggled",
-        value: false
-      });
-    },
-    buildCollapseList() {
-      /** prepare initial state of collapse menus. Doesnt allow same route names */
-      let collapse = {};
-      Menu.filter(({ heading }) => !heading).forEach(
-        ({ name, path, submenu }) => {
-          collapse[name] = this.isRouteActive(
-            submenu ? submenu.map(({ path }) => path) : path
-          );
+import store_login from './../../_store/store';
+
+    export default {
+        name: 'Sidebar',
+        data() {
+            return {
+                Menu,
+                collapse: this.buildCollapseList()
+            }
+        },
+        mounted() {
+            SidebarRun(this.$router, this.closeSidebar.bind(this))
+        },
+        computed: {
+            ...mapState({
+                showUserBlock: state => state.setting.showUserBlock
+            })
+        },
+        watch:{
+            $route (to, from){
+                this.closeSidebar()
+            }
+        },
+        methods: {
+            closeSidebar() {
+                this.$store.commit('changeSetting', { name: 'asideToggled', value: false })
+            },            
+            buildCollapseList() {
+                /** prepare initial state of collapse menus. Doesnt allow same route names */
+                let collapse = {};
+                Menu
+                    .filter(({heading}) => !heading)
+                    .forEach(({name, path, submenu}) => {
+                        collapse[name] = this.isRouteActive(submenu ? submenu.map(({path})=>path) : path)
+                    })
+                return collapse;
+            },
+            getSubRoutes(item) {
+                return item.submenu.map(({path}) => path)
+            },
+            // translate a key or return default values
+            tr (key, defaultValue) {
+                return key ? this.$t(key, {defaultValue: defaultValue}) : defaultValue;
+            },
+            isRouteActive(paths) {
+                paths = Array.isArray(paths) ? paths : [paths];
+                return paths.some(p => this.$route.path.indexOf(p) > -1)
+            },
+            routeActiveClass(paths) {
+                return { 'active': this.isRouteActive(paths) }
+            },
+            toggleItemCollapse(collapseName) {
+                for (let c in this.collapse) {
+                    if (this.collapse[c] === true && c !== collapseName)
+                        this.collapse[c] = false
+                }
+                this.collapse[collapseName] = !this.collapse[collapseName]
+            }
+
         }
-      );
-      return collapse;
-    },
-    getSubRoutes(item) {
-      return item.submenu.map(({ path }) => path);
-    },
-    // translate a key or return default values
-    tr(key, defaultValue) {
-      return key ? this.$t(key, { defaultValue: defaultValue }) : defaultValue;
-    },
-    isRouteActive(paths) {
-      paths = Array.isArray(paths) ? paths : [paths];
-      return paths.some(p => this.$route.path.indexOf(p) > -1);
-    },
-    routeActiveClass(paths) {
-      return { active: this.isRouteActive(paths) };
-    },
-    toggleItemCollapse(collapseName) {
-      for (let c in this.collapse) {
-        if (this.collapse[c] === true && c !== collapseName)
-          this.collapse[c] = false;
-      }
-      this.collapse[collapseName] = !this.collapse[collapseName];
-    },
-    logout() {
-      store_login.dispatch("logout").then(() => {
-        this.$router.push("/login");
-      });
     }
-  }
-};
 </script>

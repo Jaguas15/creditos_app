@@ -79,8 +79,7 @@ export default {
       
         {
           key: 'estado',
-          label: 'Estado', 
-          class: 'text-center',
+          label: 'Estado',
           formatter: (value, key, item) => {
             return value ? 'Activo' : 'inactivo'
           },

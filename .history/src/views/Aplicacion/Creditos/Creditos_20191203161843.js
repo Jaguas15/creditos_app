@@ -18,7 +18,6 @@ export default {
       loading: false,
       cedula_buscar: null,
       col_clientes: [
-        "seleccionado",
         {
           key: "id_cliente",
           label: "Código"
@@ -66,7 +65,7 @@ export default {
         }
       ],
       clientes: [],
-      estado_seleccion_cliente: [],
+      estado_seleccion_cliente: false,
       cliente_seleccionado: {
         id_clientes: 0
       },
@@ -81,7 +80,7 @@ export default {
       vr_capital: 0,
       estudios: 0,
       credito_maestro: {},
-      detalle_credito: [],
+      detalle_credito: [],      
       datos_detalle: [],
       perPage: 10,
       currentPage: 1,
@@ -97,24 +96,20 @@ export default {
     fn_buscar_cliente() {
       let cli = new Clientes_service();
 
-      if (this.cedula_buscar != "") {
-        this.loading = true;
+      this.loading = true;
 
-        cli
-          .cliente_x_cedula_get(this.cedula_buscar)
-          .then(response => {
-            this.clientes = response.data;
-            this.loading = false;
-          })
-          .catch(error => {
-            console.log(error.data);
-          });
-      }else{
-          this.clientes = []
-      }
+      cli
+        .cliente_x_cedula_get(this.cedula_buscar)
+        .then(response => {
+          this.clientes = response.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          console.log(error.data);
+        });
     },
     onRowSelected(record) {
-      this.estado_seleccion_cliente = record;
+      this.estado_seleccion_cliente = !this.estado_seleccion_cliente;
     },
     onFiltered(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
@@ -233,6 +228,7 @@ export default {
       }
     },
     fnLimpiar() {
+        this.estado_seleccion_cliente = !this.estado_seleccion_cliente;
       this.cedula_buscar = null;
       (this.clientes = []), (this.fecha = new Date());
       (this.periodo = "SEMANAL"),
@@ -240,6 +236,8 @@ export default {
         (this.tasa = 0),
         (this.vr_capital = 0),
         (this.estudios = 0);
+      this.detalle_credito = [];
+      
     },
     fnGuardarCredito() {
       let credito = new Credito_service();
@@ -258,7 +256,7 @@ export default {
         total_saldo += Number(this.detalle_credito[i].v_saldo);
       }
 
-      //console.log('Al guardar maestro el detalle es asi ', this.detalle_credito.length);
+      //console.log(this.formatDate(this.fecha));
 
       // Datos Maestro
       this.credito_maestro = {
@@ -279,14 +277,14 @@ export default {
       credito
         .credito_create(this.credito_maestro)
         .then(response => {
-          //console.log("Respuesta luego de insertar maestro: ", response.data);
+          //console.log("Respuesta luego de insertar maestro: ", response.data);          
           this.fnGuardarDetalleCredito(response.data.id_inserted);
         })
         .catch(error => {
           console.log(error.data);
         });
 
-      this.fnLimpiar();
+        this.fnLimpiar();
 
       this.$bvToast.toast("El crédito ha sido creado.", {
         title: "Datos registrados!",
@@ -295,19 +293,15 @@ export default {
       });
     },
     fnGuardarDetalleCredito(id_credito) {
-      let credito_det = new Credito_service();
-
-      console.log("longitud_cuotas a recorrer", this.detalle_credito.length);
-
+      let credito_det = new Credito_service();     
+      
       this.datos_detalle = [];
 
       for (let i = 0; i < this.detalle_credito.length; i++) {
         this.datos_detalle.push({
           id_credito: id_credito,
           nro_coutas: this.detalle_credito[i].numero_couta,
-          fecha_credito: this.$utility.formatDate(
-            this.detalle_credito[i].fecha_couta
-          ),
+          fecha_credito: this.formatDate(this.detalle_credito[i].fecha_couta),
           vlor_capital: this.detalle_credito[i].v_capital,
           vlor_interes: this.detalle_credito[i].v_interes,
           vlor_couta: this.detalle_credito[i].valor_couta,
@@ -315,7 +309,7 @@ export default {
         });
       }
 
-      //console.log("detalle a enviar", this.datos_detalle);
+      console.log(this.datos_detalle);
 
       credito_det
         .credito_detalle_create(this.datos_detalle)
@@ -324,8 +318,8 @@ export default {
           console.log(error.data);
         });
 
-      this.estado_seleccion_cliente = [];
-      this.detalle_credito = [];
+        
+      
     }
   }
 };

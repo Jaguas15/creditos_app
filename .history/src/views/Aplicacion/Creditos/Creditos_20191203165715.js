@@ -18,7 +18,6 @@ export default {
       loading: false,
       cedula_buscar: null,
       col_clientes: [
-        "seleccionado",
         {
           key: "id_cliente",
           label: "Código"
@@ -66,7 +65,7 @@ export default {
         }
       ],
       clientes: [],
-      estado_seleccion_cliente: [],
+      estado_seleccion_cliente: false,
       cliente_seleccionado: {
         id_clientes: 0
       },
@@ -97,24 +96,20 @@ export default {
     fn_buscar_cliente() {
       let cli = new Clientes_service();
 
-      if (this.cedula_buscar != "") {
-        this.loading = true;
+      this.loading = true;
 
-        cli
-          .cliente_x_cedula_get(this.cedula_buscar)
-          .then(response => {
-            this.clientes = response.data;
-            this.loading = false;
-          })
-          .catch(error => {
-            console.log(error.data);
-          });
-      }else{
-          this.clientes = []
-      }
+      cli
+        .cliente_x_cedula_get(this.cedula_buscar)
+        .then(response => {
+          this.clientes = response.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          console.log(error.data);
+        });
     },
     onRowSelected(record) {
-      this.estado_seleccion_cliente = record;
+      this.estado_seleccion_cliente = !this.estado_seleccion_cliente;
     },
     onFiltered(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
@@ -233,6 +228,7 @@ export default {
       }
     },
     fnLimpiar() {
+      this.estado_seleccion_cliente = !this.estado_seleccion_cliente;
       this.cedula_buscar = null;
       (this.clientes = []), (this.fecha = new Date());
       (this.periodo = "SEMANAL"),
@@ -240,6 +236,9 @@ export default {
         (this.tasa = 0),
         (this.vr_capital = 0),
         (this.estudios = 0);
+
+      this.detalle_credito = [];
+      this.datos_detalle = [];
     },
     fnGuardarCredito() {
       let credito = new Credito_service();
@@ -286,8 +285,6 @@ export default {
           console.log(error.data);
         });
 
-      this.fnLimpiar();
-
       this.$bvToast.toast("El crédito ha sido creado.", {
         title: "Datos registrados!",
         variant: "success",
@@ -315,17 +312,14 @@ export default {
         });
       }
 
-      //console.log("detalle a enviar", this.datos_detalle);
+      console.log("detalle a enviar", this.datos_detalle);
 
       credito_det
         .credito_detalle_create(this.datos_detalle)
         .then(response => {})
         .catch(error => {
           console.log(error.data);
-        });
-
-      this.estado_seleccion_cliente = [];
-      this.detalle_credito = [];
+        });      
     }
   }
 };

@@ -109,8 +109,6 @@ export default {
           .catch(error => {
             console.log(error.data);
           });
-      }else{
-          this.clientes = []
       }
     },
     onRowSelected(record) {

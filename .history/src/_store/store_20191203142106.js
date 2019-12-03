@@ -8,8 +8,7 @@ export default new Vuex.Store({
     state: {
         status: '',
         token: localStorage.getItem('token') || '',
-        user: {},
-        nombre: localStorage.getItem('nameUser') || '',
+        user: {}
     },
     mutations: {
         auth_request(state) {
@@ -19,6 +18,7 @@ export default new Vuex.Store({
             state.status = 'success'
             state.token = token
             state.user = user
+            console.log(user);
         },
         auth_error(state) {
             state.status = 'error'
@@ -26,7 +26,6 @@ export default new Vuex.Store({
         logout(state) {
             state.status = ''
             state.token = ''
-            state.nombre = ''
         },
     },
     actions: {
@@ -37,12 +36,11 @@ export default new Vuex.Store({
                     .then(resp => {
                         const token = resp.data.access_token
                         const user = resp.data.email
-                        var name = resp.data.nombre
+                        const name = resp.data.nombre
                         //console.log(name)
                         localStorage.setItem('token', token)
-                        localStorage.setItem('nameUser', name)
                         axios.defaults.headers.common['Authorization'] = token
-                        commit('auth_success', token, user)
+                        commit('auth_success', token, user, name)
                         resolve(resp)
                     })
                     .catch(err => {

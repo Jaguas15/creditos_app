@@ -38,7 +38,7 @@ export default new Vuex.Store({
                         const token = resp.data.access_token
                         const user = resp.data.email
                         var name = resp.data.nombre
-                        //console.log(name)
+                        console.log(name)
                         localStorage.setItem('token', token)
                         localStorage.setItem('nameUser', name)
                         axios.defaults.headers.common['Authorization'] = token

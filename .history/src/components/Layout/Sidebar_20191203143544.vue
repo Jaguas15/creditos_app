@@ -24,8 +24,8 @@
                 </div>
                 <!-- Name and Job-->
                 <div class="user-block-info">
-                  <span class="user-block-name">Hola, {{ nombreLogged }}!!</span>
-                  <span class="user-block-role">Desarrollador</span>
+                  <span class="user-block-name">Hello, {{ nombreLogged }}</span>
+                  <span class="user-block-role">Designer</span>
                   <span @click="logout" class="user-block-role">Cerrar sesión</span>
                 </div>
               </div>

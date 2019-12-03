@@ -52,7 +52,7 @@
                         select-mode="single"
                         reponsive="sm"
                       >
-                        <template slot="seleccionado" slot-scope="{rowSelected}">
+                        <template slot="selected" slot-scope="{rowSelected}">
                           <template v-if="rowSelected">
                             <span aria-hidden="true">&check;</span>
                             <span class="sr-only">Selected</span>

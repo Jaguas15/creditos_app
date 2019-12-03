@@ -110,7 +110,7 @@ export default {
             console.log(error.data);
           });
       }else{
-          this.clientes = []
+          this.estado_seleccion_cliente = []
       }
     },
     onRowSelected(record) {

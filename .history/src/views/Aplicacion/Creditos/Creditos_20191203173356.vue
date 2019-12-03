@@ -52,7 +52,7 @@
                         select-mode="single"
                         reponsive="sm"
                       >
-                        <template slot="seleccionado" slot-scope="{rowSelected}">
+                        <template slot="selected" slot-scope="{rowSelected}">
                           <template v-if="rowSelected">
                             <span aria-hidden="true">&check;</span>
                             <span class="sr-only">Selected</span>
@@ -69,7 +69,7 @@
                 </div>
               </div>
 
-              <div class="row" v-if="estado_seleccion_cliente.length>0">
+              <div class="row" v-if="rowSelected">
                 <div class="col-12">
                   <div class="card card-default">
                     <div class="card-header text-truncate">

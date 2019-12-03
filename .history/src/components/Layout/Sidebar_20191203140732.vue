@@ -24,8 +24,8 @@
                 </div>
                 <!-- Name and Job-->
                 <div class="user-block-info">
-                  <span class="user-block-name">Hola, {{ nombreLogged }}!!</span>
-                  <span class="user-block-role">Desarrollador</span>
+                  <span class="user-block-name">Hello, {{ store_login.state.nameUser }}</span>
+                  <span class="user-block-role">Designer</span>
                   <span @click="logout" class="user-block-role">Cerrar sesión</span>
                 </div>
               </div>
@@ -109,20 +109,16 @@ export default {
   data() {
     return {
       Menu,
-      collapse: this.buildCollapseList(),
-      nombreLogged: null
+      collapse: this.buildCollapseList()
     };
   },
   mounted() {
-    SidebarRun(this.$router, this.closeSidebar.bind(this));    
+    SidebarRun(this.$router, this.closeSidebar.bind(this));
   },
   computed: {
     ...mapState({
       showUserBlock: state => state.setting.showUserBlock
     })
-  },
-  created() {
-this.nombreLogged = store_login.state.nombre
   },
   watch: {
     $route(to, from) {
