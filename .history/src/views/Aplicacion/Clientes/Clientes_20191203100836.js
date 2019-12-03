@@ -88,15 +88,9 @@ export default {
           sortByFormatted: true,
           filterByFormatted: true
         },
-        { key: 'actions', label: 'Actions' }, 
-       
+        { key: 'actions', label: 'Actions' }
       ],
 
-      infoModal: {
-        id: 'info-modal',
-        title: '',
-        content: ''
-      }, 
       demo: {
         required: "",
         email: "",
@@ -162,15 +156,6 @@ export default {
   methods: {
     format(value, event) {
       return value.toLowerCase();
-    },
-    info(item, index, button) {
-      this.infoModal.title = `Row index: ${index}`
-      this.infoModal.content = JSON.stringify(item, null, 2)
-      this.$root.$emit('bv::show::modal', this.infoModal.id, button)
-    },
-    resetInfoModal() {
-      this.infoModal.title = ''
-      this.infoModal.content = ''
     },
     onFiltered(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
@@ -316,7 +301,6 @@ export default {
     
     edit(row) {
       Object.assign(this.datos_cliente, row);
-    console.log(row)
     },
     clear() {
       this.tableData = [];

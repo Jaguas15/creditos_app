@@ -45,7 +45,7 @@
             </b-input-group-append>
           </b-input-group>
         </b-form-group>
-
+      <!-- </b-col> -->
 
     <b-table
 
@@ -60,38 +60,15 @@
       :current-page="currentPage"
       :sort-direction="sortDirection"
       @filtered="onFiltered"
-    >
-      <!-- <template slot="actions" slot-scope="row">
+    ></b-table>
+    <template v-slot:cell(actions)="row">
         <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
           Info modal
         </b-button>
         <b-button size="sm" @click="row.toggleDetails">
           {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
         </b-button>
-      </template> -->
-      
-      <template slot="actions" slot-scope="props">
-        <div>
-          <b-button
-            class="btn btn-labeled btn-info mb-2 mr-1"
-            type="button"
-            @click.prevent="edit(props.item)"
-            v-b-modal.clientesModal
-          >
-            <span class="btn-label">
-              <i class="fa fa-edit"></i>
-            </span>Editar
-          </b-button>
-          <!-- <b-button  class="btn btn-labeled btn-info mb-2 mr-1" type="button"  @click.prevent="remove(props.row)">
-            <span class="btn-label">
-              <i class="far fa-trash-alt"></i>
-            </span> Eliminar
-           </b-button>  -->
-        </div>
       </template>
-
-    </b-table>
-
    
      <b-col sm="7" md="6" class="my-1">
         <b-pagination

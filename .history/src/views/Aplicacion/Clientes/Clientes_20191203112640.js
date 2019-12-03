@@ -316,7 +316,6 @@ export default {
     
     edit(row) {
       Object.assign(this.datos_cliente, row);
-    console.log(row)
     },
     clear() {
       this.tableData = [];

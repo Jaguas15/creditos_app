@@ -75,7 +75,7 @@
           <b-button
             class="btn btn-labeled btn-info mb-2 mr-1"
             type="button"
-            @click.prevent="edit(props.item)"
+            @click.prevent="edit(props)"
             v-b-modal.clientesModal
           >
             <span class="btn-label">
