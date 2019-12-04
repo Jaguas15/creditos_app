@@ -6,6 +6,7 @@ import Login from "./views/Pages/Login.vue";
 import Layout from "./components/Layout/Layout.vue";
 //import Clientes from "@/views/Aplicacion/Clientes/Clientes";
 
+const Home = () => import('@/views/Home.vue')
 const Clientes = () => import('@/views/Aplicacion/Clientes/Clientes.vue')
 const Creditos = () => import('@/views/Aplicacion/Creditos/Creditos.vue')
 
@@ -24,6 +25,14 @@ let router = new Router({
       path: "/",
       component: Layout,
       children: [
+        {
+          path: '',
+          component: Home,
+          name: 'home',
+          meta: {
+            requiresAuth: true
+          }
+        },
         {
           path: "/clientes",
           name: "clientes",

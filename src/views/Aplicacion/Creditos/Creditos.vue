@@ -52,15 +52,29 @@
                         select-mode="single"
                         reponsive="sm"
                       >
-                        <template slot="seleccionado" slot-scope="{rowSelected}">
-                          <template v-if="rowSelected">
-                            <span aria-hidden="true">&check;</span>
-                            <span class="sr-only">Selected</span>
-                          </template>
-                          <template v-else>
-                            <span aria-hidden="true">&nbsp;</span>
-                            <span class="sr-only">Not selected</span>
-                          </template>
+                        <template slot="Seleccionado" slot-scope="{rowSelected}">
+                          <div style="text-align: center;">
+                            <template v-if="rowSelected">
+                              <span aria-hidden="true">
+                                <i class="fa fa-check"></i>
+                              </span>
+                              <span class="sr-only">Selected</span>
+                            </template>
+                            <template v-else>
+                              <span aria-hidden="true">
+                                <i class="fa fa-window-close"></i>
+                              </span>
+                              <span class="sr-only">Not selected</span>
+                            </template>
+                          </div>
+                        </template>
+
+                        <template slot="Consulta" slot-scope="data">
+                          <div style="text-align: center;">
+                            <b-button variant="outline-primary">
+                              <i class="fa fa-eye"></i>
+                            </b-button>
+                          </div>
                         </template>
                       </b-table>
                     </div>

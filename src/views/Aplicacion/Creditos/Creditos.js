@@ -18,7 +18,7 @@ export default {
       loading: false,
       cedula_buscar: null,
       col_clientes: [
-        "seleccionado",
+        "Seleccionado",
         {
           key: "id_cliente",
           label: "Código"
@@ -34,7 +34,8 @@ export default {
         {
           key: "apellidos",
           label: "Apellidos"
-        }
+        },
+        'Consulta'
       ],
       col_detalle: [
         {
