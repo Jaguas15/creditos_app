@@ -32,6 +32,7 @@
                   </button>
                 </div>
               </div>
+              {{estado_seleccion_cliente}}
               <div class="row">
                 <div class="col-md-12">
                   <!-- START card-->
@@ -70,8 +71,8 @@
                         </template>
 
                         <template slot="Consulta" slot-scope="data">
-                          <div style="text-align: center;">
-                            <b-button variant="outline-primary">
+                          <div v-if="data" style="text-align: center;">
+                            <b-button v-b-modal.modal-xl variant="outline-success">
                               <i class="fa fa-eye"></i>
                             </b-button>
                           </div>
@@ -124,7 +125,7 @@
                           v-model="vr_capital"
                           id="capital"
                           class="mb-2 mr-sm-2 mb-sm-0  align-right"
-                          placeholder="$ Capital"                           
+                          placeholder="$ Capital"
                             ></b-input>-->
                             <input-price v-model="vr_capital"></input-price>
                           </div>
@@ -222,6 +223,9 @@
         </div>
       </div>
     </form>
+
+    <!-- <modal-creditos title="Creditos del cliente"/> -->
+
   </ContentWrapper>
 </template>                
 

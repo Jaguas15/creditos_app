@@ -7,10 +7,13 @@ import inputPrice from "./../../../components/inputPrice/inputPrice";
 import Clientes_service from "./../../../_services/clientes_service";
 import Credito_service from "./../../../_services/creditos_service";
 
+import CreditosModal from './CreditosModal';
+
 export default {
   name: "Creditos",
   components: {
-    "input-price": inputPrice
+    "input-price": inputPrice,
+    'modal-creditos': CreditosModal
   },
   data() {
     return {
@@ -69,7 +72,7 @@ export default {
       clientes: [],
       estado_seleccion_cliente: [],
       cliente_seleccionado: {
-        id_clientes: 0
+        id_cliente: 0
       },
       periodos: [
         { value: "SEMANAL", text: "Semanal" },
@@ -110,12 +113,13 @@ export default {
           .catch(error => {
             console.log(error.data);
           });
-      }else{
-          this.clientes = []
+      } else {
+        this.clientes = []
       }
     },
     onRowSelected(record) {
       this.estado_seleccion_cliente = record;
+      this.cliente_seleccionado.id_cliente = record[0].id_cliente != 'undefined' ? record[0].id_cliente : 0;
     },
     onFiltered(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
@@ -131,7 +135,7 @@ export default {
     },
 
     fnCalcularDiferido() {
-      Date.prototype.addDay = function(days) {
+      Date.prototype.addDay = function (days) {
         var date = new Date(this.valueOf());
         date.setDate(date.getDate() + days);
         return date;
@@ -206,7 +210,7 @@ export default {
           .setAttribute("class", "form-control is-invalid");
         document.querySelector("#cedula").setAttribute("aria-invalid", true);
 
-        setTimeout(function() {
+        setTimeout(function () {
           document
             .querySelector("#cedula")
             .setAttribute("class", "form-control");
@@ -260,10 +264,10 @@ export default {
       }
 
       //console.log('Al guardar maestro el detalle es asi ', this.detalle_credito.length);
-
+      console.log('id_cliente', this.cliente_seleccionado.id_cliente)
       // Datos Maestro
       this.credito_maestro = {
-        id_cliente: this.cliente_seleccionado.id_clientes,
+        id_cliente: this.cliente_seleccionado.id_cliente,
         fecha_credito: this.$utility.formatDate(this.fecha),
         fecha_vencimiento: this.$utility.formatDate(fecha_vence),
         vlor_capital: total_capital,
@@ -320,7 +324,7 @@ export default {
 
       credito_det
         .credito_detalle_create(this.datos_detalle)
-        .then(response => {})
+        .then(response => { })
         .catch(error => {
           console.log(error.data);
         });
