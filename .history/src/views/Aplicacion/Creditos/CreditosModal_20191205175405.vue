@@ -18,21 +18,7 @@
 
           <strong>CUOTAS</strong>
 
-          <b-table
-            striped
-            bordered
-            responsive
-            hover
-            :per-page="perPage"
-            :current-page="currentPage"
-            :items="detalle"
-          ></b-table>
-          <b-pagination
-            v-model="currentPage"
-            :total-rows="rows"
-            :per-page="perPage"
-            aria-controls="table_cuotas"
-          ></b-pagination>
+          <b-table striped bordered responsive hover :items="detalle"></b-table>
         </div>
       </div>
     </b-modal>
@@ -51,22 +37,14 @@ export default {
   },
   data() {
     return {
-      detalle: [],
-      perPage: 10,
-      currentPage: 1
+      detalle: []
     };
   },
-  computed: {
-    rows() {
-      return this.detalle.length;
-    }
-  },
   methods: {
-    onRowSelected(row) {
-      //console.log(row)
-      this.cargarDetalleCredito(row[0].id_credito);
+    onRowSelected(row){
+      console.log(row)
     },
-    cargarDetalleCredito(p_id_credito) {
+    cargarDetalleCredito(p_id_credito){
       let credito_detalle = new Credito_service();
 
       credito_detalle

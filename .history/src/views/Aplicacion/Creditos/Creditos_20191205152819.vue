@@ -32,7 +32,7 @@
                   </button>
                 </div>
               </div>
-
+                    
               <div class="row">
                 <div class="col-md-12">
                   <!-- START card-->
@@ -46,7 +46,6 @@
                         ref="selectableTable"
                         selectable
                         small
-                        responsive
                         bordered
                         :fields="col_clientes"
                         :items="clientes"
@@ -73,7 +72,7 @@
 
                         <template slot="Consulta" slot-scope="data">
                           <div v-if="data" style="text-align: center;">
-                            <b-button @click="cargarCreditosCliente(data.item.id_cliente)" variant="outline-success">
+                            <b-button v-b-modal.modal-xl variant="outline-success">
                               <i class="fa fa-eye"></i>
                             </b-button>
                           </div>
@@ -94,15 +93,15 @@
                     <div class="card-body">
                       <div class="container-fluid">
                         <div class="row">
-                          <div class="col-md-2 col-xs-3">
+                          <div class="col-2">
                             <label for="fecha">Fecha</label>
                             <datepicker id="fecha" v-model="fecha" :bootstrapStyling="true" />
                           </div>
-                          <div class="col-md-2 col-xs-3">
+                          <div class="col-2">
                             <label for="periodo">Periodo</label>
                             <b-form-select id="periodo" v-model="periodo" :options="periodos"></b-form-select>
                           </div>
-                          <div class="col-md-2 col-xs-3">
+                          <div class="col-2">
                             <label for="cuotas">Cuotas</label>
                             <b-input
                               v-model="n_cuotas"
@@ -111,7 +110,7 @@
                               placeholder="No. Cuotas"
                             ></b-input>
                           </div>
-                          <div class="col-md-2 col-xs-3">
+                          <div class="col-2">
                             <label for="tasa">Tasa</label>
                             <b-input
                               v-model="tasa"
@@ -120,7 +119,7 @@
                               placeholder="Tasa"
                             ></b-input>
                           </div>
-                          <div class="col-md-2 col-xs-3">
+                          <div class="col-2">
                             <label for="capital">Vr. Capital</label>
                             <!-- <b-input
                           v-model="vr_capital"
@@ -130,7 +129,7 @@
                             ></b-input>-->
                             <input-price v-model="vr_capital"></input-price>
                           </div>
-                          <div class="col-md-2 col-xs-3">
+                          <div class="col-2">
                             <label for="estudios">Estudios</label>
                             <!-- <b-input
                           v-model="estudios"
@@ -225,7 +224,7 @@
       </div>
     </form>
 
-     <modal-creditos-cliente :creditos="cliente_creditos"/>
+    <!-- <modal-creditos title="Creditos del cliente"/> -->
 
   </ContentWrapper>
 </template>                

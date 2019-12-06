@@ -225,7 +225,7 @@
       </div>
     </form>
 
-     <modal-creditos-cliente :creditos="cliente_creditos"/>
+     <modal-creditos-cliente :creditos_data="cliente_creditos"/>
 
   </ContentWrapper>
 </template>                

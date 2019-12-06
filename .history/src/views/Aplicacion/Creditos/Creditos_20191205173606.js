@@ -7,13 +7,13 @@ import inputPrice from "./../../../components/inputPrice/inputPrice";
 import Clientes_service from "./../../../_services/clientes_service";
 import Credito_service from "./../../../_services/creditos_service";
 
-import CreditosModal from "./CreditosModal";
+import CreditosModal from './CreditosModal';
 
 export default {
   name: "Creditos",
   components: {
     "input-price": inputPrice,
-    "modal-creditos-cliente": CreditosModal
+    'modal-creditos-cliente': CreditosModal
   },
   data() {
     return {
@@ -38,7 +38,7 @@ export default {
           key: "apellidos",
           label: "Apellidos"
         },
-        "Consulta"
+        'Consulta'
       ],
       col_detalle: [
         {
@@ -70,7 +70,6 @@ export default {
         }
       ],
       clientes: [],
-      cliente_creditos: [],
       estado_seleccion_cliente: [],
       cliente_seleccionado: {
         id_cliente: 0
@@ -116,32 +115,29 @@ export default {
             console.log(error.data);
           });
       } else {
-        this.clientes = [];
+        this.clientes = []
       }
     },
     cargarCreditosCliente(p_id_cliente) {
       let credito = new Credito_service();
 
-      //console.log(p_id_cliente)
+      this.$bvModal.show('modal-consulta-cte');
 
-      credito
-        .credito_x_cliente_get(p_id_cliente)
-        .then(response => {
-          this.cliente_creditos = response.data;
-        })
-        .catch(error => {
-          console.log(error.data);
-        });
-
-      this.$bvModal.show("modal-consulta-cte");
+      if (this.id_cliente > 0) {
+        credito
+          .credito_x_cliente_get(p_id_cliente)
+          .then(response => {
+            this.creditos = response.data;            
+          })
+          .catch(error => {
+            console.log(error.data);
+          });
+      }
     },
     onRowSelected(record) {
       this.estado_seleccion_cliente = record;
 
-      let id_cte =
-        JSON.parse(JSON.stringify(record)).length > 0
-          ? JSON.parse(JSON.stringify(record))[0].id_cliente
-          : 0;
+      let id_cte = JSON.parse(JSON.stringify(record)).length > 0 ? JSON.parse(JSON.stringify(record))[0].id_cliente:0;
 
       this.cliente_seleccionado.id_cliente = id_cte;
     },
@@ -159,7 +155,7 @@ export default {
     },
 
     fnCalcularDiferido() {
-      Date.prototype.addDay = function(days) {
+      Date.prototype.addDay = function (days) {
         var date = new Date(this.valueOf());
         date.setDate(date.getDate() + days);
         return date;
@@ -234,7 +230,7 @@ export default {
           .setAttribute("class", "form-control is-invalid");
         document.querySelector("#cedula").setAttribute("aria-invalid", true);
 
-        setTimeout(function() {
+        setTimeout(function () {
           document
             .querySelector("#cedula")
             .setAttribute("class", "form-control");
@@ -288,7 +284,7 @@ export default {
       }
 
       //console.log('Al guardar maestro el detalle es asi ', this.detalle_credito.length);
-      console.log("id_cliente", this.cliente_seleccionado.id_cliente);
+      console.log('id_cliente', this.cliente_seleccionado.id_cliente)
       // Datos Maestro
       this.credito_maestro = {
         id_cliente: this.cliente_seleccionado.id_cliente,
@@ -348,7 +344,7 @@ export default {
 
       credito_det
         .credito_detalle_create(this.datos_detalle)
-        .then(response => {})
+        .then(response => { })
         .catch(error => {
           console.log(error.data);
         });

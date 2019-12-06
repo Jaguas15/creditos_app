@@ -73,7 +73,7 @@
 
                         <template slot="Consulta" slot-scope="data">
                           <div v-if="data" style="text-align: center;">
-                            <b-button @click="cargarCreditosCliente(data.item.id_cliente)" variant="outline-success">
+                            <b-button @click="openModal(data)" variant="outline-success">
                               <i class="fa fa-eye"></i>
                             </b-button>
                           </div>
@@ -225,7 +225,7 @@
       </div>
     </form>
 
-     <modal-creditos-cliente :creditos="cliente_creditos"/>
+     <modal-creditos-cliente :id_cliente="cliente_seleccionado.id_cliente"/>
 
   </ContentWrapper>
 </template>                

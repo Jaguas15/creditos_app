@@ -12,13 +12,7 @@ export default class Credito_service{
 
     credito_x_cliente_get(id_cliente) {
 
-        return axios.get('http://127.0.0.1:8000/api/auth/credito_cliente/'+id_cliente);
-       
-    }
-
-    credito_detalle_get(id_credito) {
-
-        return axios.get('http://127.0.0.1:8000/api/auth/credito_detalle/'+id_credito);
+        return axios.get('http://127.0.0.1:8000/api/auth/credito_maestro/credito_cliente/'+id_cliente);
        
     }
 
@@ -34,7 +28,7 @@ export default class Credito_service{
     }
 	
 	credito_detalle_create(data) {
-		return axios.post('http://127.0.0.1:8000/api/auth/create_credito_detalle/', data, {
+		return axios.post('http://127.0.0.1:8000/api/auth/credito_detalle/', data, {
             headers: {
                 'Content-Type':'application/json',
                 'X-Requested-With':'XMLHttpRequest'
