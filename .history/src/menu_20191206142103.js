@@ -27,7 +27,7 @@ const Menu = [
     },
     {
         name: 'Pagos',
-        icon: 'icon-layers',
+        icon: 'fa fa-dollar',
         submenu: [
             {
                 name: "Aplicación de pagos",

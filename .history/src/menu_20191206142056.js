@@ -27,12 +27,12 @@ const Menu = [
     },
     {
         name: 'Pagos',
-        icon: 'icon-layers',
+        icon: 'fa fa-dollar',
         submenu: [
             {
                 name: "Aplicación de pagos",
                 path: "/reg_pagos",
-                translate: "sidebar.nav.PAGOS"
+                translate: "sidebar.nav.CREDITOS"
             }
         ]
     }
