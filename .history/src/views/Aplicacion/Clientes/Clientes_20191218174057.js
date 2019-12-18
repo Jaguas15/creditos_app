@@ -30,9 +30,9 @@ export default {
       filter:null,
       sortBy: '',
       sortDesc: false,
-      totalRows: 3,
+      totalRows:rows,
       currentPage: 1,
-      perPage: 10,
+      perPage: 5,
       pageOptions: [5, 10, 15],
       filterOn: [],
       sortDirection: 'asc',
@@ -159,11 +159,11 @@ export default {
           return { text: f.label, value: f.key }
         })
     },
-    
+    computed: {
       rows() {
-        return  this.clientes.length
+        return this.fields.length
       }
-    
+    }
   },
   methods: {
     format(value, event) {

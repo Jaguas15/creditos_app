@@ -129,14 +129,14 @@
       v-model="currentPage"
       :total-rows="rows"
       :per-page="perPage"
-      first-text="Primero"
-      prev-text="Anterior"
-      next-text="Siguiente"
-      last-text="Ultimo"
+      first-text="First"
+      prev-text="Prev"
+      next-text="Next"
+      last-text="Last"
 ></b-pagination>
      
-    <!--   Sorting By: <b>{{ sortBy }}</b>, Sort Direction:
-      <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b> -->
+      Sorting By: <b>{{ sortBy }}</b>, Sort Direction:
+      <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
     </div>
   </div>
 </template>

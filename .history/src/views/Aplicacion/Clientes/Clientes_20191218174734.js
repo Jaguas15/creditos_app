@@ -32,7 +32,7 @@ export default {
       sortDesc: false,
       totalRows: 3,
       currentPage: 1,
-      perPage: 10,
+      perPage: 3,
       pageOptions: [5, 10, 15],
       filterOn: [],
       sortDirection: 'asc',

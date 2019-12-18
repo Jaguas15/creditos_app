@@ -135,8 +135,8 @@
       last-text="Ultimo"
 ></b-pagination>
      
-    <!--   Sorting By: <b>{{ sortBy }}</b>, Sort Direction:
-      <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b> -->
+      Sorting By: <b>{{ sortBy }}</b>, Sort Direction:
+      <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
     </div>
   </div>
 </template>

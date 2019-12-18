@@ -22,27 +22,6 @@
       </span>Nuevo
     </button>
 
-
-
-
-     <!--  <b-col sm="7" md="6" class="my-1">       
-       <b-pagination
-          v-model="currentPage"
-          :total-rows=3
-          :per-page="3"
-          align="fill"
-          size="sm"
-          class="my-0"
-        ></b-pagination>
-
-         <b-pagination
-      v-model="currentPage"
-      :total-rows="totalRows"
-      :per-page= 3
-
-    ></b-pagination>
-
-      </b-col> -->
 <template>
   <div>
       <!-- <b-col lg="6" class="my-1"> -->
@@ -68,10 +47,6 @@
         </b-form-group>
 
 
-
-
-
-
     <b-table
 
       :items="clientes"
@@ -85,10 +60,7 @@
       :current-page="currentPage"
       :sort-direction="sortDirection"
       @filtered="onFiltered"
-      
     >
- 
-       
       <!-- <template slot="actions" slot-scope="row">
         <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
           Info modal
@@ -115,31 +87,37 @@
               <i class="far fa-trash-alt"></i>
             </span> Eliminar
            </b-button>  -->
-       
-   
 
         </div>
         
       </template>
 
-    </b-table>
+    
+
+   
+    
+    
+
     <div>
+      <template>
+     <b-col sm="7" md="6" class="my-1">
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="totalRows"
+          :per-page="perPage"
+          align="fill"
+          size="sm"
+          class="my-0"
+        ></b-pagination>
+      </b-col>
      
-     <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-      first-text="Primero"
-      prev-text="Anterior"
-      next-text="Siguiente"
-      last-text="Ultimo"
-></b-pagination>
-     
-    <!--   Sorting By: <b>{{ sortBy }}</b>, Sort Direction:
-      <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b> -->
+</template>
+      Sorting By: <b>{{ sortBy }}</b>, Sort Direction:
+      <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
     </div>
   </div>
 </template>
+ </b-table>
     <!--<v-client-table :data="clientes" :columns="columns" :options="options">
       <template slot="action" slot-scope="props">
         <div>
