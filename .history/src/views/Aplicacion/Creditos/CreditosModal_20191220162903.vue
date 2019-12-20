@@ -91,6 +91,10 @@
           </b-table>
     </b-card>
 
+<p> {{ creditos }}</p>
+
+
+
   <b-card
        border-variant="success"
        bg-variant="light" 
@@ -106,39 +110,7 @@
             :per-page="perPage"
             :current-page="currentPage"
             :items="detalle"
-            :fields="col_detalle"
-          >
-           <template slot="N°_Coutas" slot-scope="data">
-           <!-- `data.value` is the value after formatted by the Formatter -->
-          <p class="align-center">{{ data.value }}</p>
-          </template>
-
-         <template slot="Fecha_Credito" slot-scope="data">
-        <!-- `data.value` is the value after formatted by the Formatter -->
-       <p class="align-center">{{ data.value }}</p>
-        </template>
-
-          <template slot="Capital" slot-scope="data">
-        <!-- `data.value` is the value after formatted by the Formatter -->
-        <p class="align-right">{{ $utility.formatPrice(data.value) }}</p>
-      </template>
-
-      <template slot="Interes" slot-scope="data">
-        <!-- `data.value` is the value after formatted by the Formatter -->
-        <p class="align-right">{{ $utility.formatPrice(data.value) }}</p>
-      </template>
-
-      <template slot="Couta" slot-scope="data">
-        <!-- `data.value` is the value after formatted by the Formatter -->
-        <p class="align-right">{{ $utility.formatPrice(data.value) }}</p>
-      </template>
-
-      <template slot="Saldo" slot-scope="data">
-        <!-- `data.value` is the value after formatted by the Formatter -->
-        <p class="align-right">{{ $utility.formatPrice(data.value) }}</p>
-      </template>
-     
-          </b-table>
+          ></b-table>
       
           <b-pagination
             v-model="currentPage"
@@ -168,41 +140,6 @@ export default {
       detalle: [],
       perPage: 10,
       currentPage: 1, 
-       col_detalle:[
-     
-        {
-           key:"N°_Coutas", 
-           label:"Coutas"
-        }, 
-
-        {
-           key:"Fecha_Credito", 
-           label:"Fecha_Credito"
-        }, 
-
-         
-        {
-           key:"Capital", 
-           label:"Capital"
-        },
-
-         {
-           key:"Interes", 
-           label:"Interes"
-        },
-
-         {
-           key:"Couta", 
-           label:"Valor_Couta"
-        },
-         {
-           key:"Saldo", 
-           label:"Saldo"
-        },
-
-       ], 
-       
-       
        col_label :[
 
          {

@@ -13,7 +13,7 @@
             <div class="form-group">
               <div class="row">
                 <div class="col-md-12">
-                  <label for="cedula"><h4>Cédula:</h4></label>
+                  <label for="cedula">Cédula:</label>
                   <input
                     type="text"
                     class="form-control"
@@ -44,7 +44,7 @@
                   <!-- START card-->
                   <div class="card card-default">
                     <div class="card-header text-truncate">
-                      <h4>Información Del Cliente</h4>
+                      <h3>Infomacion Del Cliente</h3>
                     </div>
                     <div :class="!loading ? 'card-body' : 'card-body whirl double-up'">
                       <!-- Aqui info del cliente -->
@@ -95,15 +95,8 @@
                 <div class="col-12">
                   <div class="card card-default">
                     <div class="card-header text-truncate">
-                      <h4>Gestion Del Credito</h4>
+                      <h5>DILIGENCIAMIENTO DEL CREDITO</h5>
                     </div>
-                      <b-card
-                        border-variant="success"
-                        bg-variant="light" 
-                        text-variant="green" 
-                        header="" 
-                        lass="text-center"
-                        >
                     <div class="card-body">
                       <div class="container-fluid">
                         <div class="row">
@@ -164,25 +157,19 @@
                             >Calcular</b-button>
                           </div>
                         </div>
-                         
                       </div>
                     </div>
-                   </b-card>
                   </div>
-                   
                 </div>
               </div>
-
 
               <div class="row" v-if="detalle_credito.length > 0">
                 <div class="col-12">
                   <div class="card card-default">
                     <div class="card-header text-truncate">
-                
+                      <h5>CUOTAS DEL CREDITO</h5>
                     </div>
                     <div class="card-body">
-
-                     
                       <b-table
                         id="table_cuotas"
                         small
@@ -231,8 +218,6 @@
                         :per-page="perPage"
                         aria-controls="table_cuotas"
                       ></b-pagination>
-                      
-                      
                     </div>
                   </div>
                 </div>

@@ -164,12 +164,11 @@
                             >Calcular</b-button>
                           </div>
                         </div>
-                         
                       </div>
                     </div>
-                   </b-card>
-                  </div>
                    
+                  </div>
+                    </b-card>
                 </div>
               </div>
 

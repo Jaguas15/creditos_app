@@ -139,7 +139,7 @@
       </template>
      
           </b-table>
-      
+      <p>{{ detalle }}</p>
           <b-pagination
             v-model="currentPage"
             :total-rows="rows"

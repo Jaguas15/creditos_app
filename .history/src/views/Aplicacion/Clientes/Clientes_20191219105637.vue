@@ -244,6 +244,7 @@
               
                
               <b-form-select
+              
                 id="departamento"
                 v-model="datos_cliente.departamento"
                 :options="departamentos"
@@ -252,6 +253,7 @@
                 @change="listado_municipios"
                 
               >
+              <b-spinner style="width: 3rem; height: 3rem;" label="Large Spinner"></b-spinner>
               
               </b-form-select>
               

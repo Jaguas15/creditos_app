@@ -107,39 +107,8 @@
             :current-page="currentPage"
             :items="detalle"
             :fields="col_detalle"
-          >
-           <template slot="N°_Coutas" slot-scope="data">
-           <!-- `data.value` is the value after formatted by the Formatter -->
-          <p class="align-center">{{ data.value }}</p>
-          </template>
-
-         <template slot="Fecha_Credito" slot-scope="data">
-        <!-- `data.value` is the value after formatted by the Formatter -->
-       <p class="align-center">{{ data.value }}</p>
-        </template>
-
-          <template slot="Capital" slot-scope="data">
-        <!-- `data.value` is the value after formatted by the Formatter -->
-        <p class="align-right">{{ $utility.formatPrice(data.value) }}</p>
-      </template>
-
-      <template slot="Interes" slot-scope="data">
-        <!-- `data.value` is the value after formatted by the Formatter -->
-        <p class="align-right">{{ $utility.formatPrice(data.value) }}</p>
-      </template>
-
-      <template slot="Couta" slot-scope="data">
-        <!-- `data.value` is the value after formatted by the Formatter -->
-        <p class="align-right">{{ $utility.formatPrice(data.value) }}</p>
-      </template>
-
-      <template slot="Saldo" slot-scope="data">
-        <!-- `data.value` is the value after formatted by the Formatter -->
-        <p class="align-right">{{ $utility.formatPrice(data.value) }}</p>
-      </template>
-     
-          </b-table>
-      
+          ></b-table>
+      <p>{{ detalle }}</p>
           <b-pagination
             v-model="currentPage"
             :total-rows="rows"
@@ -199,6 +168,8 @@ export default {
            key:"Saldo", 
            label:"Saldo"
         },
+
+
 
        ], 
        

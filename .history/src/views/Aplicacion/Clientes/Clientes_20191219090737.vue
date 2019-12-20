@@ -67,6 +67,11 @@
           </b-input-group>
         </b-form-group>
 
+
+
+
+
+
     <b-table
 
       :items="clientes"
@@ -79,8 +84,11 @@
       :per-page="perPage"
       :current-page="currentPage"
       :sort-direction="sortDirection"
-      @filtered="onFiltered"     
+      @filtered="onFiltered"
+      
     >
+ 
+       
       <!-- <template slot="actions" slot-scope="row">
         <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
           Info modal
@@ -241,29 +249,18 @@
 
             <!-- departamento -->
             <b-form-group class="col-6" label="departamento:" label-for="departamento">
-              
-               
               <b-form-select
                 id="departamento"
                 v-model="datos_cliente.departamento"
                 :options="departamentos"
-                value-field="value"
-                text-field="text"
+                 value="b"
                 @change="listado_municipios"
-                
-              >
-              
-              </b-form-select>
-              
+              ></b-form-select>
             </b-form-group>
 
             <!-- municipio -->
             <b-form-group class="col-6" label="municipio:" label-for="municipio">
-              <b-form-select id="municipio" v-model="datos_cliente.municipio" :options="municipios" value-field="value"
-                text-field="text">
-             
-              </b-form-select>
-         
+              <b-form-select id="municipio" v-model="datos_cliente.municipio" :options="municipios"></b-form-select>
             </b-form-group>
 
             <!-- numero de formato -->

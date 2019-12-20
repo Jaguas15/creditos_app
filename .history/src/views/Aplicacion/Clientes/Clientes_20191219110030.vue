@@ -240,19 +240,21 @@
             </div>
 
             <!-- departamento -->
+            <div>
+  <div class="d-flex justify-content-center mb-3">
+    <b-spinner label="Loading..."></b-spinner>
+  </div>
+
             <b-form-group class="col-6" label="departamento:" label-for="departamento">
               
-               
               <b-form-select
                 id="departamento"
                 v-model="datos_cliente.departamento"
                 :options="departamentos"
                 value-field="value"
                 text-field="text"
-                @change="listado_municipios"
+                @change="listado_municipios">
                 
-              >
-              
               </b-form-select>
               
             </b-form-group>

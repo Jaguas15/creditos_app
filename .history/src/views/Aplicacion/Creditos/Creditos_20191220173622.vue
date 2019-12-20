@@ -95,7 +95,7 @@
                 <div class="col-12">
                   <div class="card card-default">
                     <div class="card-header text-truncate">
-                      <h4>Gestion Del Credito</h4>
+                      <h5>Gestion Del Credito</h5>
                     </div>
                       <b-card
                         border-variant="success"
@@ -164,12 +164,10 @@
                             >Calcular</b-button>
                           </div>
                         </div>
-                         
                       </div>
                     </div>
-                   </b-card>
+                     </b-card>
                   </div>
-                   
                 </div>
               </div>
 

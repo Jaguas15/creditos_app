@@ -240,6 +240,7 @@
             </div>
 
             <!-- departamento -->
+            <b-spinner style="width: 3rem; height: 3rem;" label="Large Spinner">
             <b-form-group class="col-6" label="departamento:" label-for="departamento">
               
                
@@ -249,14 +250,12 @@
                 :options="departamentos"
                 value-field="value"
                 text-field="text"
-                @change="listado_municipios"
+                @change="listado_municipios">
                 
-              >
-              
               </b-form-select>
               
             </b-form-group>
-
+</b-spinner>
             <!-- municipio -->
             <b-form-group class="col-6" label="municipio:" label-for="municipio">
               <b-form-select id="municipio" v-model="datos_cliente.municipio" :options="municipios" value-field="value"

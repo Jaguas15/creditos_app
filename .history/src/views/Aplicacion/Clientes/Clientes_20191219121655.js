@@ -168,7 +168,7 @@ export default {
   },
   methods: {
     format(value, event) {
-      return value.toUpperCase();
+      return value.toLowerCase();
     },
     info(item, index, button) {
       this.infoModal.title = `Row index: ${index}`

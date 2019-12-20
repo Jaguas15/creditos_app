@@ -239,6 +239,10 @@
               </b-form-group>
             </div>
 
+<div>
+  <div class="d-flex justify-content-center mb-3">
+    <b-spinner label="Loading..."></b-spinner>
+  </div>
             <!-- departamento -->
             <b-form-group class="col-6" label="departamento:" label-for="departamento">
               

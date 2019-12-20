@@ -242,8 +242,9 @@
             <!-- departamento -->
             <b-form-group class="col-6" label="departamento:" label-for="departamento">
               
-               
+               <b-spinner style="width: 3rem; height: 3rem;" label="Large Spinner"></b-spinner>
               <b-form-select
+              
                 id="departamento"
                 v-model="datos_cliente.departamento"
                 :options="departamentos"

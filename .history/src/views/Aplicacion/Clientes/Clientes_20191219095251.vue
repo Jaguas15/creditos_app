@@ -241,8 +241,6 @@
 
             <!-- departamento -->
             <b-form-group class="col-6" label="departamento:" label-for="departamento">
-              
-               
               <b-form-select
                 id="departamento"
                 v-model="datos_cliente.departamento"
@@ -250,20 +248,13 @@
                 value-field="value"
                 text-field="text"
                 @change="listado_municipios"
-                
-              >
-              
-              </b-form-select>
-              
+              ></b-form-select>
+              <div class="mt-3">Selected: <strong>{{ departamentos }}</strong></div>
             </b-form-group>
 
             <!-- municipio -->
             <b-form-group class="col-6" label="municipio:" label-for="municipio">
-              <b-form-select id="municipio" v-model="datos_cliente.municipio" :options="municipios" value-field="value"
-                text-field="text">
-             
-              </b-form-select>
-         
+              <b-form-select id="municipio" v-model="datos_cliente.municipio" :options="municipios"></b-form-select>
             </b-form-group>
 
             <!-- numero de formato -->

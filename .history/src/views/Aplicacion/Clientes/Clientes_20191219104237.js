@@ -1,7 +1,8 @@
 import Vue from "vue";
 import { ClientTable } from "vue-tables-2";
 import VeeValidate, { Validator } from "vee-validate";
-
+import { BSpinner } from 'bootstrap-vue'
+Vue.component('b-spinner', BSpinner)
 
 Vue.use(VeeValidate, {
   fieldsBagName: "formFields", // fix issue with b-table
@@ -168,7 +169,7 @@ export default {
   },
   methods: {
     format(value, event) {
-      return value.toUpperCase();
+      return value.toLowerCase();
     },
     info(item, index, button) {
       this.infoModal.title = `Row index: ${index}`

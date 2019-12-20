@@ -95,15 +95,8 @@
                 <div class="col-12">
                   <div class="card card-default">
                     <div class="card-header text-truncate">
-                      <h4>Gestion Del Credito</h4>
+                      <h5>Gestion Del Credito</h5>
                     </div>
-                      <b-card
-                        border-variant="success"
-                        bg-variant="light" 
-                        text-variant="green" 
-                        header="" 
-                        lass="text-center"
-                        >
                     <div class="card-body">
                       <div class="container-fluid">
                         <div class="row">
@@ -164,15 +157,11 @@
                             >Calcular</b-button>
                           </div>
                         </div>
-                         
                       </div>
                     </div>
-                   </b-card>
                   </div>
-                   
                 </div>
               </div>
-
 
               <div class="row" v-if="detalle_credito.length > 0">
                 <div class="col-12">
@@ -181,8 +170,6 @@
                 
                     </div>
                     <div class="card-body">
-
-                     
                       <b-table
                         id="table_cuotas"
                         small
@@ -231,8 +218,6 @@
                         :per-page="perPage"
                         aria-controls="table_cuotas"
                       ></b-pagination>
-                      
-                      
                     </div>
                   </div>
                 </div>

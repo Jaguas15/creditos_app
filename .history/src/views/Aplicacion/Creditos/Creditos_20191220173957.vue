@@ -167,9 +167,9 @@
                          
                       </div>
                     </div>
-                   </b-card>
-                  </div>
                    
+                  </div>
+                   </b-card>
                 </div>
               </div>
 
